@@ -6,5 +6,5 @@ import randfacts
 x = randfacts.getFact()
 print(x)
 ```
-will a random fact like:
+will print a random fact like:
 ```Penguins can't taste sweet or savory flavors, only sour and salty ones```
