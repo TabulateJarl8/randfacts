@@ -1,4 +1,5 @@
-randfacts is a python library that generates random facts. You can use ```python randfacts.getFact()``` to return a random fun fact.
+randfacts is a python library that generates random facts. You can use ```python
+randfacts.getFact()``` to return a random fun fact.
 
 Example:
 ```python
