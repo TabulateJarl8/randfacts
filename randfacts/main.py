@@ -14,8 +14,13 @@ def getFact():
 	except:
 		getFact()
 	else:
-		data = data['articleBody']
-		factList = data.split(". ")
-		fact = factList[randint(0,(len(factList)-1))]
-		return fact
-
+		try:
+			data = data['articleBody']
+			factList = data.split(". ")
+			fact = factList[randint(0,(len(factList)-1))]
+			if fact == None:
+				getFact()
+			else:
+				return fact
+		except:
+			getFact()
