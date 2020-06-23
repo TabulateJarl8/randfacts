@@ -1,3 +1,10 @@
+[![PyPI version](https://badge.fury.io/py/randfacts.svg)](https://badge.fury.io/py/randfacts)
+[![Downloads](https://pepy.tech/badge/randfacts)](https://pepy.tech/project/randfacts)
+[![PyPI license](https://img.shields.io/pypi/l/ansicolortags.svg)](https://pypi.python.org/pypi/ansicolortags/)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/TabulateJarl8/randfacts/graphs/commit-activity)
+[![GitHub issues](https://img.shields.io/github/issues/TabulateJarl8/randfacts.svg)](https://GitHub.com/TabulateJarl8/randfacts/issues/)
+
+
 randfacts is a python library that generates random facts. You can use ```randfacts.getFact()``` to return a random fun fact.
 
 Example:
