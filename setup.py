@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="randfacts",
-    version="0.2.0",
+    version="0.2.2",
     author="Tabulate",
     author_email="tabulatejarl8@gmail.com",
     description="Package to generate random facts",
@@ -19,8 +19,5 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.6',
-	install_requires=[
-		"requests",
-		"bs4"
-	],
+	include_package_data=True,
 )

@@ -1,9 +1,11 @@
-from random import *
+from random import randint
+import os
 
 def getFact(filter=False):
-	with open("safe.txt") as f:
+	dir_path = os.path.dirname(os.path.realpath(__file__))
+	with open(os.path.join(dir_path, "safe.txt")) as f:
 		safelist = [fact.rstrip() for fact in f.readlines()]
-	with open("unsafe.txt") as f:
+	with open(os.path.join(dir_path, "unsafe.txt")) as f:
 		unsafelist = [fact.rstrip() for fact in f.readlines()]
 	if filter == False:
 		safelist += unsafelist
