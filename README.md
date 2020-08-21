@@ -5,7 +5,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/TabulateJarl8/randfacts.svg)](https://GitHub.com/TabulateJarl8/randfacts/issues/)
 
 
-randfacts is a python library that generates random facts. You can use ```randfacts.getFact()``` to return a random fun fact.
+Randfacts is a python library that generates random facts. You can use ```randfacts.getFact()``` to return a random fun fact.
 
 Example:
 ```python
@@ -15,3 +15,9 @@ print(x)
 ```
 will print a random fact like:
 ```Penguins can't taste sweet or savory flavors, only sour and salty ones```
+
+This package has a filter option to filter out potentially inappropriate facts. It is set to not filter by default. To enable the filter, you can just set the `filter` parameter to `True`.
+```python
+from randfacts import getFact
+print(getFact(True))
+```
