@@ -16,8 +16,8 @@ print(x)
 will print a random fact like:
 ```Penguins can't taste sweet or savory flavors, only sour and salty ones```
 
-This package has a filter option to filter out potentially inappropriate facts. It is set to not filter by default. To enable the filter, you can just set the `filter` parameter to `True`.
+This package has a filter option to filter out potentially inappropriate facts. The filter is on by default. To disable the filter, you can just set the `filter` parameter to `False`.
 ```python
 from randfacts import getFact
-print(getFact(True))
+print(getFact(False))
 ```
