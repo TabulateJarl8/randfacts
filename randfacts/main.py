@@ -1,6 +1,7 @@
 from random import randint
+import pkg_resources as pkg # Do not change to importlib! Unless 3.8 or higher is specified.
 import os
-version = "0.2.7" # NOTE: REMEMBER TO CHANGE VERSION HERE
+version = pkg.get_distribution('randfacts').version # NOTE: REMEMBER TO CHANGE VERSION HERE
 
 def getFact(filter=True):
 	dir_path = os.path.dirname(os.path.realpath(__file__))
