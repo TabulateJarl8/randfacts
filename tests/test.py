@@ -33,7 +33,7 @@ except AttributeError:
 
 print(u"\u001b[33m===================================================================\u001b[0m")
 print(u"\u001b[32mSuccessful Test! (2/3 COMPLETE)\u001b[0m")
-print(u"\u001b[36mInitializing test! (2/3)\u001b[0m")
+print(u"\u001b[36mInitializing test! (3/3)\u001b[0m")
 
 # Check that versions are the same
 print(u"\u001b[33m===================================================================\u001b[0m")
