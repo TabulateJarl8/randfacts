@@ -27,7 +27,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
-          pip3 install setuptools
+          pip3 install setuptools wheel
           python setup.py sdist
           pip3 install dist/*
           python3 tests/test.py
