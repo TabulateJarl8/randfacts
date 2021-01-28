@@ -1,6 +1,5 @@
 from random import randint
 import os
-version = "0.2.7" # NOTE: REMEMBER TO CHANGE VERSION HERE
 
 def getFact(filter=True):
 	dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -11,6 +10,3 @@ def getFact(filter=True):
 	if filter == False:
 		safelist += unsafelist
 	return safelist[randint(0, len(safelist) - 1)]
-
-def getVersion():
-	return version

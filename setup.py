@@ -1,17 +1,23 @@
 import setuptools
+import os
 
 with open("README.md", "r") as fh:
-    long_description = fh.read()
+	long_description = fh.read()
+
+here = os.path.abspath(os.path.dirname(__file__))
+about = {}
+with open(os.path.join(here, "randfacts", "__version__.py"), "r") as f:
+	exec(f.read(), about)
 
 setuptools.setup(
-    name="randfacts",
-    version="0.2.7", # NOTE: CHANGE THIS TO THE DESIREABLE VERSION!
-    author="Tabulate",
-    author_email="tabulatejarl8@gmail.com",
-    description="Package to generate random facts",
+    name=about["__title__"],
+    version=about["__version__"],
+    author=about["__author__"],
+    author_email=about["__author_email__"],
+    description=about["__description__"],
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/TabulateJarl8/randfacts",
+    url=about["__url__"],
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
