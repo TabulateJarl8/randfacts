@@ -1,6 +1,6 @@
 from random import randint
 import os
-version = "0.2.6" 
+version = "0.2.6"
 
 def getFact(filter=True):
 	dir_path = os.path.dirname(os.path.realpath(__file__))

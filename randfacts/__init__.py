@@ -1,2 +1,1 @@
-from randfacts.main import getFact
-from randfacts.main import getVersion
+from randfacts.main import getFac, getVersion
