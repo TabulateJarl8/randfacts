@@ -11,7 +11,7 @@ try:
 	print("")
 except AttributeError:
 	print(u"\u001b[31m===================================================================\u001b[0m")
-	print(u"\u001b[31mWhoops! Executing a getFact() call got an error!\u001b[0m")
+	print(u"\u001b[31mWhoops! Executing a getFact() call got an AttributeError!\u001b[0m")
 	print(u"\u001b[31m===================================================================\u001b[0m")
 	exit(2)
 print(u"\u001b[33m===================================================================\u001b[0m")
