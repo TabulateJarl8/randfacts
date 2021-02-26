@@ -33,7 +33,7 @@ with tqdm(total=len(combinations)) as pbar:
 		pbar.update(1)
 print()
 if matches != []:
-	print('\n'.join(matches))
+	print('\n'.join([str(match) for match in matches]))
 	print()
 	print('Number of similar facts: ' + str(len(matches)))
 	exit(2)
