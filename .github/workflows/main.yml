@@ -38,5 +38,5 @@ jobs:
       - uses: actions/checkout@v2
       - name: Run a multi-line script
         run: |
-          pip3 install fuzzywuzzy
+          pip3 install fuzzywuzzy tqdm
           python3 tests/checkduplicates.py
