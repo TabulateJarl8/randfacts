@@ -34,6 +34,8 @@ with tqdm(total=len(combinations)) as pbar:
 print()
 if matches != []:
 	print(matches)
+	print()
+	print('Number of similar facts: ' + str(len(matches)))
 	exit(2)
 else:
 	exit()
