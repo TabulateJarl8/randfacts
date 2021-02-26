@@ -2,7 +2,7 @@
 
 name: CI
 
-# Controls when the action will run. 
+# Controls when the action will run.
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
@@ -31,3 +31,12 @@ jobs:
           python setup.py sdist
           pip3 install dist/*
           python3 tests/test.py
+  checkduplicates:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run a multi-line script
+        run: |
+          pip3 install fuzzywuzzy
+          python tests/checkduplicates.py
