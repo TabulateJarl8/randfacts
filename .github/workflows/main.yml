@@ -28,7 +28,7 @@ jobs:
       - name: Run a multi-line script
         run: |
           pip3 install setuptools wheel
-          python setup.py sdist
+          python3 setup.py sdist
           pip3 install dist/*
           python3 tests/test.py
   checkduplicates:
@@ -39,4 +39,4 @@ jobs:
       - name: Run a multi-line script
         run: |
           pip3 install fuzzywuzzy
-          python tests/checkduplicates.py
+          python3 tests/checkduplicates.py
