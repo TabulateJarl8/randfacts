@@ -14,7 +14,7 @@ def partial_match(x, y, xindex, yindex):
 	if xindex == yindex:
 		return None
 	else:
-		ratio = fuzz.ratio(x, y)
+		ratio = fuzz.token_sort_ratio(x, y)
 		if ratio > 80:
 			return (x, y), (xindex, yindex), ratio
 		else:
