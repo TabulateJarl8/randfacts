@@ -21,3 +21,5 @@ This package has a filter option to filter out potentially inappropriate facts. 
 from randfacts import getFact
 print(getFact(False))
 ```
+
+If you want to access the list of facts directly, you can just import the `safeFacts`, `unsafeFacts`, or `allFacts` lists from the randfacts module.
