@@ -1,6 +1,6 @@
 [![PyPI version](https://badge.fury.io/py/randfacts.svg)](https://badge.fury.io/py/randfacts)
 [![Downloads](https://pepy.tech/badge/randfacts)](https://pepy.tech/project/randfacts)
-[![PyPI license](https://img.shields.io/pypi/l/ansicolortags.svg)](https://pypi.python.org/pypi/ansicolortags/)
+[![PyPI license](https://img.shields.io/pypi/l/randfacts.svg)](https://pypi.python.org/pypi/randfacts/)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/TabulateJarl8/randfacts/graphs/commit-activity)
 [![GitHub issues](https://img.shields.io/github/issues/TabulateJarl8/randfacts.svg)](https://GitHub.com/TabulateJarl8/randfacts/issues/)
 
