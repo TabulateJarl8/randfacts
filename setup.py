@@ -9,6 +9,8 @@ about = {}
 with open(os.path.join(here, "randfacts", "__version__.py"), "r") as f:
 	exec(f.read(), about)
 
+packages = ['randfacts']
+
 setuptools.setup(
     name=about["__title__"],
     version=about["__version__"],
@@ -18,9 +20,16 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url=about["__url__"],
-    packages=setuptools.find_packages(),
+    packages=packages,
+	package_dir={'randfacts': 'randfacts'},
+	python_requires=">=3.6",
     classifiers=[
         "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Natural Language :: English"
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
