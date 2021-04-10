@@ -21,8 +21,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url=about["__url__"],
     packages=packages,
-	package_dir={'randfacts': 'randfacts'},
-	python_requires=">=3.6",
+    package_dir={'randfacts': 'randfacts'},
     classifiers=[
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.6",
