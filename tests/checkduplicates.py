@@ -20,6 +20,7 @@ def partial_match(x, y, xindex, yindex):
 		else:
 			return None
 
+print('Generating combinations...')
 combinations = itertools.combinations(enumerate(safe + unsafe), 2)
 combinations = [[[idx1, idx2], [arr1, arr2]] for ((idx1, arr1), (idx2, arr2)) in combinations]
 

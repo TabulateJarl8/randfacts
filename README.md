@@ -5,7 +5,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/TabulateJarl8/randfacts.svg)](https://GitHub.com/TabulateJarl8/randfacts/issues/)
 
 
-Randfacts is a python library that generates random facts. You can use ```randfacts.getFact()``` to return a random fun fact.
+Randfacts is a python library that generates random facts. You can use ```randfacts.getFact()``` to return a random fun fact. Disclaimer: Facts are not guaranteed to be true.
 
 Example:
 ```python
