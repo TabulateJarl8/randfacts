@@ -23,3 +23,5 @@ print(getFact(False))
 ```
 
 If you want to access the list of facts directly, you can just import the `safeFacts`, `unsafeFacts`, or `allFacts` lists from the randfacts module.
+
+Randfacts can also be executed directly from the command line, with `python3 -m randfacts`.

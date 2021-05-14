@@ -14,3 +14,6 @@ def getFact(filter=True):
 	if filter == False:
 		return choice(allFacts)
 	return choice(safeFacts)
+
+if __name__ == '__main__':
+	print(getFact())
