@@ -35,17 +35,17 @@ randfacts can be executed via the command line with the following commands:
 Normal execution; only safe facts
 
 ```sh
-	$ python3 -m randfacts
+$ python3 -m randfacts
 ```
 
 The unsafe argument can be supplied to provide only unsafe facts
 
 ```sh
-	$ python3 -m randfacts --unsafe
+$ python3 -m randfacts --unsafe
 ```
 
 The mixed argument can be provided to provide both safe and unsafe facts.
 
 ```sh
-	$ python3 -m randfacts --mixed
+$ python3 -m randfacts --mixed
 ```
