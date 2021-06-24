@@ -1,6 +1,6 @@
 from random import choice
 import os
-import sys
+import argparse
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
@@ -41,9 +41,15 @@ def _cli_entrypoint():
 	"""Entrypoint for execution via command-line.
 	"""
 
-	if '--mixed' in sys.argv:
+	parser = argparse.ArgumentParser(description='Generate random facts from the command-line')
+	group = parser.add_mutually_exclusive_group()
+	group.add_argument('-m', '--mixed', action='store_true', help='Include safe and unsafe facts')
+	group.add_argument('-u', '--unsafe', action='store_true', help='Only include unsafe facts')
+	args = parser.parse_args()
+
+	if args.mixed:
 		print(getFact(False))
-	elif '--unsafe' in sys.argv:
+	elif args.unsafe:
 		print(getFact(only_unsafe=True))
 	else:
 		print(getFact())

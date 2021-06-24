@@ -49,3 +49,9 @@ The mixed argument can be provided to provide both safe and unsafe facts.
 ```sh
 $ python3 -m randfacts --mixed
 ```
+
+More help.
+
+```sh
+$ python3 -m randfacts --help
+```

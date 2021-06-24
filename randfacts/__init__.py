@@ -35,6 +35,11 @@ CLI Examples:
 	The mixed argument can be provided to provide both safe and unsafe facts.
 
 		$ python3 -m randfacts --mixed
+
+	More help.
+
+		$ python3 -m randfacts --help
+
 """
 
 from .__version__ import __title__, __description__, __url__, __version__, __author__, __author_email__, __license__, __copyright__
