@@ -7,7 +7,25 @@
 
 Randfacts is a python library that generates random facts. You can use `randfacts.getFact()` to return a random fun fact. Disclaimer: Facts are not guaranteed to be true.
 
-Example:
+# Installation
+
+randfacts can either be installed via pip or via the AUR, whichever way you prefer.
+
+### Installation via pip:
+
+```sh
+$ pip3 install randfacts
+```
+
+### Installation via AUR:
+
+```sh
+$ git clone https://aur.archlinux.org/python-randfacts.git && cd python-randfacts
+$ makepkg -si
+```
+
+# Usage and examples
+
 ```python
 import randfacts
 x = randfacts.getFact()
@@ -29,6 +47,9 @@ print(getFact(only_unsafe=True))
 ```
 
 If you want to access the list of facts directly, you can just import the `safeFacts`, `unsafeFacts`, or `allFacts` lists from the randfacts module.
+
+
+## Command line usage
 
 randfacts can be executed via the command line with the following commands:
 
