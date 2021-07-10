@@ -39,5 +39,5 @@ jobs:
       - name: Run a multi-line script
         run: |
           pip3 install -U setuptools wheel pip
-          pip3 install fuzzywuzzy tqdm python-Levenshtein
+          pip3 install rapidfuzz tqdm
           python3 tests/checkduplicates.py
