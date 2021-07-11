@@ -36,5 +36,5 @@ setuptools.setup(
 		"Intended Audience :: Developers"
 	],
 	python_requires='>=3.6',
-	include_package_data=True,
+	include_package_data=True
 )

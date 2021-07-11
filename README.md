@@ -5,7 +5,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/TabulateJarl8/randfacts.svg)](https://GitHub.com/TabulateJarl8/randfacts/issues/)
 
 
-Randfacts is a python library that generates random facts. You can use `randfacts.getFact()` to return a random fun fact. Disclaimer: Facts are not guaranteed to be true.
+Randfacts is a python library that generates random facts. You can use `randfacts.get_fact()` to return a random fun fact. Disclaimer: Facts are not guaranteed to be true.
 
 # Installation
 
@@ -28,7 +28,7 @@ $ makepkg -si
 
 ```python
 import randfacts
-x = randfacts.getFact()
+x = randfacts.get_fact()
 print(x)
 ```
 will print a random fact like:
@@ -36,17 +36,19 @@ will print a random fact like:
 
 This package has a filter option to filter out potentially inappropriate facts. The filter is on by default. To disable the filter, you can just set the `filter_enabled` parameter to `False`.
 ```python
-from randfacts import getFact
-print(getFact(False))
+from randfacts import get_fact
+print(get_fact(False))
+# or
+print(get_fact(filter_enabled=False))
 ```
 
-`getFact` also has a parameter that will make the function only return unsafe facts. This argument takes precedence over the `filter_enabled` argument. For example:
+`get_fact` also has a parameter that will make the function only return unsafe facts. This argument takes precedence over the `filter_enabled` argument. For example:
 
 ```py
-print(getFact(only_unsafe=True))
+print(get_fact(only_unsafe=True))
 ```
 
-If you want to access the list of facts directly, you can just import the `safeFacts`, `unsafeFacts`, or `allFacts` lists from the randfacts module.
+If you want to access the list of facts directly, you can just import the `safe_facts`, `unsafe_facts`, or `all_facts` lists from the randfacts module.
 
 
 ## Command line usage
