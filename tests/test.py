@@ -1,21 +1,35 @@
+import unittest
 import randfacts
+import subprocess
 
-print("")
-print("")
-print(u"\u001b[33m===================================================================\u001b[0m")
-print(u"\u001b[36mInitializing test! (1/1)")
-try:
-	print(u"\u001b[33m===================================================================\u001b[0m")
-	print(randfacts.getFact())
-	print(u"\u001b[33m===================================================================\u001b[0m")
-	print("")
-except AttributeError:
-	print(u"\u001b[31m===================================================================\u001b[0m")
-	print(u"\u001b[31mWhoops! Executing a getFact() call got an AttributeError!\u001b[0m")
-	print(u"\u001b[31m===================================================================\u001b[0m")
-	exit(2)
-print(u"\u001b[33m===================================================================\u001b[0m")
-print(u"\u001b[32mSuccessful Test! (1/1 COMPLETE)\u001b[0m")
-print(u"\u001b[35mTerminating!\u001b[0m")
-print(u"\u001b[33m===================================================================\u001b[0m")
-exit()
+class TestRandfacts(unittest.TestCase):
+
+	def test_get_fact(self):
+		self.assertIsInstance(randfacts.get_fact(), str, 'get_fact() must return a string')
+
+	def test_all_facts_list(self):
+		self.assertIsInstance(randfacts.all_facts, list, 'all_facts must be a list')
+
+	def test_safe_facts_list(self):
+		self.assertIsInstance(randfacts.safe_facts, list, 'safe_facts must be a list')
+
+	def test_unsafe_facts_list(self):
+		self.assertIsInstance(randfacts.unsafe_facts, list, 'unsafe_facts must be a list')
+
+	def test_cli_no_args(self):
+		child = subprocess.Popen(['python3', '-m', 'randfacts'], stdout=subprocess.DEVNULL)
+		child.communicate()
+		self.assertEqual(child.returncode, 0, '`python3 -m randfacts` must return with exit code 0')
+
+	def test_cli_unsafe_args(self):
+		child = subprocess.Popen(['python3', '-m', 'randfacts', '--unsafe'], stdout=subprocess.DEVNULL)
+		child.communicate()
+		self.assertEqual(child.returncode, 0, '`python3 -m randfacts --unsafe` must return with exit code 0')
+
+	def test_cli_mixed_args(self):
+		child = subprocess.Popen(['python3', '-m', 'randfacts', '--mixed'], stdout=subprocess.DEVNULL)
+		child.communicate()
+		self.assertEqual(child.returncode, 0, '`python3 -m randfacts --mixed` must return with exit code 0')
+
+if __name__ == '__main__':
+	unittest.main()
