@@ -1,9 +1,17 @@
-[![PyPI version](https://badge.fury.io/py/randfacts.svg)](https://badge.fury.io/py/randfacts)
-[![Downloads](https://pepy.tech/badge/randfacts)](https://pepy.tech/project/randfacts)
-[![PyPI license](https://img.shields.io/pypi/l/randfacts.svg)](https://pypi.python.org/pypi/randfacts/)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/TabulateJarl8/randfacts/graphs/commit-activity)
-[![GitHub issues](https://img.shields.io/github/issues/TabulateJarl8/randfacts.svg)](https://GitHub.com/TabulateJarl8/randfacts/issues/)
-
+<p align="center">
+<img src="https://raw.githubusercontent.com/TabulateJarl8/randfacts/master/imgs/logo-embedded-font.svg" />
+</p>
+<p align="center">
+	<a href="https://badge.fury.io/py/randfacts"><img alt="PyPI" src="https://img.shields.io/pypi/v/randfacts" /></a>
+	<a href="https://aur.archlinux.org/packages/python-randfacts/"><img alt="AUR version" src="https://img.shields.io/aur/version/python-randfacts"></a>
+	<a href="https://pepy.tech/project/randfacts"><img alt="Downloads" src="https://pepy.tech/badge/randfacts" /></a>
+	<a href="https://pypi.python.org/pypi/randfacts/"><img alt="PyPI license" src="https://img.shields.io/pypi/l/randfacts.svg" /></a>
+	<a href="https://GitHub.com/TabulateJarl8/randfacts/graphs/commit-activity"><img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" /></a>
+	<a href="https://GitHub.com/TabulateJarl8/randfacts/issues/"><img alt="GitHub Issues" src="https://img.shields.io/github/issues/TabulateJarl8/randfacts.svg" /></a>
+	<a href="https://github.com/TabulateJarl8/randfacts/actions/workflows/main.yml"><img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/TabulateJarl8/randfacts/CI?label=Duplicate%20Facts%20Test" /></a>
+	<a href="https://github.com/TabulateJarl8"><img alt="GitHub followers" src="https://img.shields.io/github/followers/TabulateJarl8?style=social" /></a>
+	<a href="https://github.com/TabulateJarl8/randfacts"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/TabulateJarl8/randfacts?style=social" /></a>
+</p>
 
 Randfacts is a python library that generates random facts. You can use `randfacts.get_fact()` to return a random fun fact. Disclaimer: Facts are not guaranteed to be true.
 
