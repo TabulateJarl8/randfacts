@@ -4,14 +4,14 @@ import argparse
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
-with open(os.path.join(dir_path, 'safe.txt')) as f:
+with open(os.path.join(dir_path, 'safe.txt'), encoding='utf-8') as f:
 	safe_facts = [
 		fact.rstrip('\r\n ')
 		for fact in f.readlines()
 		if fact.rstrip('\r\n ') != ''
 	]
 
-with open(os.path.join(dir_path, 'unsafe.txt')) as f:
+with open(os.path.join(dir_path, 'unsafe.txt'), encoding='utf-8') as f:
 	unsafe_facts = [
 		fact.rstrip('\r\n ')
 		for fact in f.readlines()
