@@ -2,8 +2,8 @@ import os
 
 parent = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 
-safe_path = os.path.join(parent, 'safe.txt')
-unsafe_path = os.path.join(parent, 'unsafe.txt')
+safe_path = os.path.join(parent, 'randfacts', 'safe.txt')
+unsafe_path = os.path.join(parent, 'randfacts', 'unsafe.txt')
 
 bad_characters = [("‘", "'"), ("’", "'"), ("“", '"'), ("”", '"')]
 
