@@ -61,7 +61,7 @@ if matches != []:
 
 		print('Removing duplicates from facts...')
 		facts = safe + unsafe
-		for index in sorted(indexes_to_remove, reverse=True):
+		for index in sorted(list(set(indexes_to_remove)), reverse=True):
 			del facts[index]
 
 		safe = [fact for fact, correct_list in facts if correct_list == 'safe']
