@@ -1,6 +1,10 @@
 import unittest
-import randfacts
+import sys
+import pathlib
 import subprocess
+
+sys.path.insert(1, str(pathlib.Path(__file__).parents[1]))
+from randfacts import randfacts # local randfacts instead of installed version
 
 class TestRandfacts(unittest.TestCase):
 
@@ -30,9 +34,9 @@ class TestRandfacts(unittest.TestCase):
 		child = subprocess.Popen(['python3', '-m', 'randfacts', '--mixed'], stdout=subprocess.DEVNULL)
 		child.communicate()
 		self.assertEqual(child.returncode, 0, '`python3 -m randfacts --mixed` must return with exit code 0')
-		
+
 	def test_invalid_characters(self):
-		bad_characters = ["‘", "’", "“", "”"]
+		bad_characters = ["‘", "’", "“", "”", "…", "—"]
 		for index, fact in enumerate(randfacts.all_facts):
 			for char in bad_characters:
 				self.assertNotIn(char, fact, f'Index: {index}')

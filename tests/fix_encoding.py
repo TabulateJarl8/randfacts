@@ -5,7 +5,7 @@ parent = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 safe_path = os.path.join(parent, 'randfacts', 'safe.txt')
 unsafe_path = os.path.join(parent, 'randfacts', 'unsafe.txt')
 
-bad_characters = [("‘", "'"), ("’", "'"), ("“", '"'), ("”", '"')]
+bad_characters = [("‘", "'"), ("’", "'"), ("“", '"'), ("”", '"'), ("…", "..."), ('—', '-')]
 
 with open(safe_path, encoding="utf-8") as f:
 	safe = f.read()
