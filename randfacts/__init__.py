@@ -42,32 +42,12 @@ CLI Examples:
 
 """
 
-import sys, warnings
 from .__version__ import __title__, __description__, __url__, __version__, __author__, __author_email__, __license__, __copyright__
 from randfacts.randfacts import get_fact, safe_facts, unsafe_facts, all_facts
 
-# Deprecated names and methods
-getFact = get_fact
-safeFacts = safe_facts
-unsafeFacts = unsafe_facts
-allFacts = all_facts
-
-def WrapMod(mod, deprecated):
-	"""Return a wrapped object that warns about deprecated accesses"""
-	deprecated = set(deprecated)
-	class Wrapper(object):
-		def __getattr__(self, attr):
-			name_map = [item for item in deprecated if item[0] == attr]
-			if name_map:
-				warnings.warn(f'Property {name_map[0][0]} is deprecated and will be removed in a future version, please use {name_map[0][1]}')
-
-			return getattr(mod, attr)
-
-		def __setattr__(self, attr, value):
-			name_map = [item for item in deprecated if item[0] == attr]
-			if name_map:
-				warnings.warn(f'Property {name_map[0][0]} is deprecated and will be removed in a future version, please use {name_map[0][1]}')
-			return setattr(mod, attr, value)
-	return Wrapper()
-
-sys.modules[__name__] = WrapMod(sys.modules[__name__], deprecated=[('allFacts', 'all_facts'), ('safeFacts', 'safe_facts'), ('unsafeFacts', 'unsafe_facts'), ('getFact', 'get_fact')])
+import warnings as _warnings
+# Deprecated methods
+def getFact(filter_enabled=True, only_unsafe=False):
+	"""This method is deprecated. Please use get_fact"""
+	_warnings.warn("getFact is deprecated. Please use get_fact", DeprecationWarning, stacklevel=2)
+	return get_fact(filter_enabled, only_unsafe)
