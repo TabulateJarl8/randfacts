@@ -1,7 +1,7 @@
 __title__ = "randfacts"
 __description__ = "Package to generate random facts"
 __url__ = "https://github.com/TabulateJarl8/randfacts"
-__version__ = "0.10.0"
+__version__ = "0.11.0"
 __author__ = "Tabulate"
 __author_email__ = "tabulatejarl8@gmail.com"
 __license__ = "MIT"
