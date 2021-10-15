@@ -49,8 +49,7 @@ def get_fact(filter_enabled: bool = True, only_unsafe: bool = False) -> str:
 
 
 def _cli_entrypoint():
-	"""Entrypoint for execution via command-line.
-	"""
+	"""Entrypoint for execution via command-line."""
 
 	parser = argparse.ArgumentParser(
 		description='Generate random facts from the command-line'
