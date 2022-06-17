@@ -86,7 +86,3 @@ More help.
 ```sh
 $ python3 -m randfacts --help
 ```
-
-## REST API Usage
-
-There is an unofficial REST API for this module. The source code/links can be found [here](https://github.com/Parzival129/Randfacts-Rest-Api).
