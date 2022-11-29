@@ -27,6 +27,12 @@ $ pip3 install randfacts
 
 ### Installation via AUR:
 
+Via your AUR helper, like paru:
+```sh
+paru -S python-randfacts
+```
+
+Or manually
 ```sh
 $ git clone https://aur.archlinux.org/python-randfacts.git && cd python-randfacts
 $ makepkg -si
