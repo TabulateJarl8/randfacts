@@ -8,7 +8,7 @@
 	<a href="https://pypi.python.org/pypi/randfacts/"><img alt="PyPI license" src="https://img.shields.io/pypi/l/randfacts.svg" /></a>
 	<a href="https://GitHub.com/TabulateJarl8/randfacts/graphs/commit-activity"><img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" /></a>
 	<a href="https://GitHub.com/TabulateJarl8/randfacts/issues/"><img alt="GitHub Issues" src="https://img.shields.io/github/issues/TabulateJarl8/randfacts.svg" /></a>
-	<a href="https://github.com/TabulateJarl8/randfacts/actions/workflows/main.yml"><img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/TabulateJarl8/randfacts/CI?label=Duplicate%20Facts%20Test" /></a>
+	<a href="https://github.com/TabulateJarl8/randfacts/actions/workflows/main.yml"><img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/TabulateJarl8/randfacts/main.yml?branch=master&label=Duplicate%20Facts%20Test" /></a>
 	<a href="https://github.com/TabulateJarl8"><img alt="GitHub followers" src="https://img.shields.io/github/followers/TabulateJarl8?style=social" /></a>
 	<a href="https://github.com/TabulateJarl8/randfacts"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/TabulateJarl8/randfacts?style=social" /></a>
 </p>
