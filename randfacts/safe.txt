@@ -4929,82 +4929,14 @@ A human body contains almost 100 trillion cells.
 Eyelashes live for about 150 days before falling out.
 You can't breathe and swallow at the same time.
 Pteronophobia is the fear of being tickled by feathers.
-Crows often hold grudges against specific people.
-The oldest "your mom" joke was discovered on a 3,500-year-old Babylonian tablet.
 Two infectious diseases have been successfully wiped out: Smallpox and Rinderpest.
-Cherophobia is the irrational fear of fun or happiness.
-If you lift a kangaroo's tail off the ground, it can't hop.
-Bananas are curved because they grow towards the sun.
-Most Korean people don't have armpit odor.
-The original London Bridge is now in Arizona.
-During your lifetime, you will produce enough saliva to fill 50 bathtubs!
-If Pinocchio said "My Nose Will Grow Now," it would create a paradox.
-Polar bears could eat as many as 10 penguins in a single sitting...
-Car manufacturer Volkswagen makes sausages.
-Movie trailers were originally shown after the movie, which is why they're called "trailers."
-The smallest bone in your body is in your ear.
-Tennis players can be fined up to $20,000 for swearing while playing at Wimbledon.
-Only 5% of the ocean has been explored.
-Most people fart around 14 to 23 times a day!
 The following can be read forward and backward: Do geese see God?
-A baby octopus is about the size of a flea when it is born.
-A sheep, a duck, and a rooster were the first passengers to take a trip in a hot air balloon.
-In Uganda, around 48% of the population is under 15 years of age.
-On average, men get bored of a shopping trip after 26 minutes.
-In the 16th Century, Turkish women could initiate divorce if their husbands didn't provide enough coffee.
-Recycling just one tin can saves enough energy to watch television for 3 hours.
-After the premiere of 16 and Pregnant, teen pregnancy rates dropped.
-Squirrels cause approximately 10-20% of US power outages.
-The Battle of Hastings didn't actually take place in Hastings.
-Human blood cells have different lifespans.
-A swarm of 20,000 bees followed a car for two days because their queen was stuck inside.
-Eating carrots can turn your skin orange.
-Bob Dylan's birth name was Robert Zimmerman.
-A small child could swim through the veins of a blue whale.
-The word "y'all" dates back to at least 1631.
-J.K. Rowling chose the unusual name "Hermione" so young girls wouldn't be teased for being nerdy.
-Hewlett-Packard's (also known as HP) name was decided in a coin toss in 1939.
-The names of the Pokémon Hitmonlee and Hitmonchan are based on Bruce Lee and Jackie Chan.
-Pigs are considered to be the world's fifth-smartest animal.
-Pirates wore earrings because they believed they improved their eyesight.
-The Twitter bird actually has a name – Larry.
-Octopuses actually have six arms and two legs!
-Pound cake got its name because the original recipe contained a pound of butter, sugar, flour, and eggs.
-There are only two times that we know of that snow fell in the Sahara desert.
-Mike Tyson once offered a zoo attendant $10,000 to let him fight a gorilla.
-ABBA turned down 1 billion dollars to do a reunion tour.
 Captive pandas may sometimes fake pregnancies.
 The first alarm clock could only ring at 4 am.
-Some insects and small birds see the world in slow motion.
-A goat called William Windsor served as a Lance Corporal in the British Army.
-The most venomous jellyfish in the world is the Irukandji.
-March 20th is known as Snowman Burning Day.
-Queen Elizabeth II can't sit on the Iron Throne from Game of Thrones.
-There is an official Wizard of New Zealand.
-An apple, potato, and onion all taste the same if you eat them with your nose plugged.
 It's a common misconception that Vincent van Gogh only sold one painting in his lifetime.
-Michael Jackson offered to make a Harry Potter musical, but the offer was rejected.
-The world record for stuffing drinking straws into your mouth at once is 650.
-Nutella was invented just after WWII ended because chocolate was so expensive.
-North Korea has its own space program.
-Ants leave maps for other ants when they walk.
-Tears contain a natural painkiller, which reduces pain and improves your mood.
-Saturn is the only planet in our solar system that could float in water.
-Male cats have longer tails than female cats.
-George W. Bush was once a cheerleader.
-In total, there are 205 bones in the skeleton of a horse.
-Coca-Cola once bought all the website URLs that can be read as ahh, all the way up to 62 h's.
-Each year there are more than 40,000 toilet-related injuries in the United States.
-Strawberries can be red, yellow, green, or white.
-Walt Disney World is the second-largest buyer of fireworks in the US.
 Four people lived in a home for 6 months infested with about 2,000 brown recluse spiders, but none of them were harmed.
 Madonna has brontophobia, which is the fear of thunder.
-In June 2017, the Facebook community reached 2 billion active users.
-Samuel L. Jackson requested a purple lightsaber in Star Wars to accept the part as Mace Windu.
 Paraskavedekatriaphobia is the fear of Friday the 13th.
-In 1998, Sony accidentally sold 700,000 camcorders that had the technology to see through people's clothes.
-During your lifetime, you will spend around seventy-nine days brushing your teeth.
-Ronald McDonald is "Donald McDonald" in Japan because it makes pronunciation easier for the Japanese.
 Butterflies cannot fly if their body temperature is less than 86 degrees.
 Neurons multiply at a rate 250,000 neurons per minute during early pregnancy.
 Elephants have the longest pregnancy in the animal kingdom at 22 months. The longest human pregnancy on record is 17 months, 11 days.
@@ -5155,7 +5087,6 @@ Elephants are the only mammals that cannot jump.
 11% of the world is left-handed.
 A healthy (non-colorblind) human eye can distinguish between 500 shades of gray.
 Lizards can self-amputate their tails for protection. It grows back after a few months.
-Los Angeles' full name is "El Pueblo de Nuestra Senora la Reina de los Angeles de Porciuncula".
 A honeybee can fly at fifteen miles per hour.
 A "jiffy" is the scientific name for 1/100th of a second.
 The average child recognizes over 200 company logos by the time he enters first grade.
@@ -5178,7 +5109,6 @@ The world's longest snake (by reliable documentation) is the reticulated python,
 Common Cobra venom is not on the list of top 10 venoms yet it is still 40 times more toxic than cyanide.
 The venom of the Australian Brown Snake is so powerful only 1/14,000th of an ounce is enough to kill a human.
 Truck driving is the most dangerous occupation by accidental deaths (799 in 2001).
-Banging your head against a wall uses 150 calories an hour.
 Elephants only sleep for two hours each day.
 The strongest muscle in the human body is the tongue. (the heart is not a muscle)
 In golf, a 'Bo Derek' is a score of 10.
@@ -5462,7 +5392,6 @@ In Raiders of the Lost Ark there is a wall carving of R2-D2 and C-3P0 behind the
 "I" is the most spoken word in the English language
 "You" is the second most spoken English word
 Spain leads the world in cork production
-There are 1,792 steps in the Eiffel Tower
 There is a city in Norway called "Hell"
 The human feet perspire half a pint of fluid a day
 An Olympic gold medal must contain 92.5 percent silver
@@ -5499,7 +5428,6 @@ The World's Largest Pumpkin Weighs More Than a Sports Car
 "Natiform" Is a Term for Something That Looks Like a Bum
 Doctors Who Play Video Games More Than Three Hours a Week Make Fewer Operating Room Errors
 The Average American Woman Owns Seven Pairs of Jeans and Only Wears Four
-Dolly Parton Lost a Dolly Parton Lookalike Contest
 The Lines on the Inside of Your Wrist Have a Name
 New York City Is Going to Get Bigger to Prepare for Climate Change
 A Sneeze Sounds Different Around the World
@@ -5528,7 +5456,6 @@ Every Dutch Police Car Has a Teddy Bear in It
 There Is a Blonde Zebra in Africa
 It's Illegal to Sell Photos of the Eiffel Tower at Night
 There's a Patron Saint for Dentists
-Hawaiian Pizza is Canadian
 David Hasselhoff's Divorce Settlement Included Ownership of the Nickname "The Hoff"
 The World's Longest Fingernails Are More Than Two Feet Long
 Neanderthals Mass Produced Tools in a "Flintstone Factory" 60,000 Years Ago
@@ -5734,7 +5661,6 @@ New Zealand was once auctioned on eBay.
 There is a city in Oregon called Boring.
 Leeches were used to predict the weather.
 The '?!' punctuation mark has a term.
-Only owning one guinea pig is illegal in Switzerland.
 A man in Florida once threw a live alligator through a drive-thru window.
 Great Britain once had a number where you can report rogue traffic cones.
 The largest recorded snowflake is 15 inches wide.
@@ -5799,15 +5725,12 @@ The most popular state bird is the Northern cardinal.
 Triskaidekaphobia is the fear of the number 13.
 A single dollar bill costs 5 cents to make.
 Baby sea otters are unable to swim.
-Snakes can predict earthquakes.
 The King of Hearts is the only King without a mustache.
 Only two diseases have been completely eradicated.
 The only English word that ends with 'mt' is Dreamt.
-May 29th is Put a Pillow on Your Fridge Day.
 The opposite sides of dice will always equal 7.
 The metal studs found on denim jeans serve a particular purpose.
 The average adult spends more time on the toilet than exercising.
-About 7% of American adults believe chocolate milk comes from brown cows.
 Bananas get their curved shape by growing towards the sun.
 Your fingernails on your dominant hand grow faster.
 Apple seeds contain cyanide.
@@ -5840,18 +5763,12 @@ Ravens are always aware when someone is watching them.
 An eagle is capable of killing a young deer and flying away with it.
 Baby spiders are called spiderlings.
 A palindrome is a sentence that is the same when read backward and forwards.
-The roar of a lion can be heard up to 5 miles away.
 The average male will become bored after 26 minutes of shopping.
-The U.S. Navy uses Xbox controllers for their periscopes.
-There is a species of spider dubbed the 'hobo spider'.
 Baby octopuses are the size of a flea.
 The premiere of the TV reality show '16 and pregnant' helped lower the rate of teen pregnancy.
 Up to 20% of power outages in the U.S are due to squirrels.
-95% of people text things that they would never say in person.
 The Mayo Clinic made glow in the dark cats while trying to find a cure for AIDS.
 The Antarctic glaciers are made up of 3% penguin urine.
-Facebook, Instagram, and Twitter are banned in China.
-Honeybees can recognize human faces.
 The happiest prisoner on death row had an IQ of 46.
 Violin bows are made from horsehair.
 IKEA is an acronym.
@@ -5866,7 +5783,6 @@ The backward punctuation mark is used to identify sarcasm.
 If a body is too obese, it can cause complications when being cremated.
 Flossing your teeth improves memory.
 A common souvenir people bring from the U.S are red solo cups.
-St. Lucia is the only country that is named after a woman.
 Ben & Jerry's made a graveyard for their former flavors.
 Pluto was one temporarily closer to the sun than Neptune.
 About $3.70 is given to an American child per tooth they lose.
@@ -6121,7 +6037,6 @@ Flamingos eat with their head upside down.
 Bats are the only mammals that can fly, but their leg bones are so thin that it is almost impossible for them to walk.
 Ants don't have lungs.
 Grizzly bears can run up to 30 miles per hour.
-Sea otters hold hands while they sleep so they don't drift apart.
 Next to humans, mosquitoes are the deadliest animal on Earth.
 Ostrich's eyes are bigger than its brain.
 A group of frogs is called an army.
@@ -6453,7 +6368,6 @@ There are over 87,000 Americans on waiting lists for organ transplants.
 Catsup leaves the bottle at a rate of 25 miles per year.
 Toxic house plants poison more children than household chemicals do.
 You are more likely to be infected by flesh-eating bacteria than you are to be struck by lightning.
-According to Genesis 1:20-22, the chicken came before the egg.
 It is physically impossible for you to lick your elbow.
 Like fingerprints, everyone's tongue print is different.
 Your heart beats over 100,000 times a day.
@@ -6483,7 +6397,6 @@ According to tests made at the Institute for the Study of Animal Problems in Was
 An iguana can stay under water for 28 minutes.
 Crocodiles and alligators are surprisingly fast on land. Although they are rapid, they are not agile, so if you ever find yourself chased by one, run in a zigzag line. You'll lose him or her every time.
 Horses can't vomit.
-A crocodile cannot stick its tongue out.
 Butterflies taste with their feet.
 Penguins can jump as high as six feet in the air.
 All polar bears are left-handed.
@@ -6646,7 +6559,6 @@ The longest English word is 189,819 letters long
 "Running amok" is a medically recognized mental condition
 Some octopus species lay 56,000 eggs at a time
 Cats have fewer toes on their back paws
-Kleenex tissues were originally intended for gas masks
 Blue whales eat half a million calories in one mouthful
 That tiny pocket in jeans was designed to store pocket watches
 Turkeys can blush
@@ -6908,7 +6820,6 @@ A flock of peacocks is called a party. Party hard, peacocks!
 The Supreme Court has its own basketball court, with a great nickname: "The highest court on the land!" Get it?!
 Time stops at the speed of light.
 The average human body carries more bacteria cells than human cells.
-In their lifetime, the average person walks the equivalent of five times around the Earth.
 Humans wouldn't be able to taste food without saliva.
 If Betelgeuse exploded right now, the star's last light show would brighten our sky for around two months.
 Oona Chaplin, who played Robb Stark's wife in Game of Thrones, is Charlie Chaplin's granddaughter.
@@ -6959,7 +6870,6 @@ Superman didn't always fly.
 The first computer was invented in the 1940s.
 Space smells like seared steak.
 The longest wedding veil was the same length as 63.5 football fields.
-The unicorn is the national animal of Scotland.
 Bees sometimes sting other bees.
 Kids ask 300 questions a day.
 The total weight of ants on earth once equaled the total weight of people.
@@ -7238,7 +7148,6 @@ Dogs and cats consume almost $7 billion worth of pet food a year.
 315 entries in Webster's Dictionary will be misspelled.
 85,000,000 tons of paper are used each year in the U.S.
 There are between 5,000 and 7,000 tigers kept as pets in the United States.
-A company in Taiwan makes dinnerware out of wheat so you can eat your plate.
 A fully loaded supertanker traveling at normal speed takes a least twenty minutes to stop.
 A hummingbird weighs less than a penny.
 A male emperor moth can smell a female emperor moth up to 7 miles away.
@@ -7295,3 +7204,103 @@ Two 1903 paintings recently sold at auction for $590,000. The paintings were in 
 The biggest dog on record was an Old English Mastiff that weighed 343 pounds. He was 8 feet, 3 inches, from nose to tail.
 The time spent deleting spam email messages costs U.S. businesses $21.6 billion annually.
 More than 2,500 left-handed people are killed each year by using products that are made for right-handed people.
+Banging your head against a wall for one hour burns 150 calories.
+In Switzerland, it is illegal to own just one guinea pig.
+The color orange was actually named after oranges.
+Snakes can predict earthquakes.
+Crows often hold grudges against specific people.
+The oldest "your mom" joke was discovered on a 3,500-year-old Babylonian tablet.
+You get Goosebumps when you're scared to make yourself look bigger.
+May 29 is officially "Put a Pillow on Your Fridge Day."
+Cherophobia is the irrational fear of fun or happiness.
+7% of American adults believe that chocolate milk comes from brown cows.
+If you lift a kangaroo's tail off the ground, it can't hop.
+Bananas are curved because they grow towards the sun.
+Most Korean people don't have armpit odor.
+The original London Bridge is now in Arizona.
+During your lifetime, you will produce enough saliva to fill 50 bathtubs!
+If Pinocchio said, "My Nose Will Grow Now," it would create a paradox.
+Polar bears could eat as many as 10 penguins in a single sitting...
+Car manufacturer Volkswagen makes sausages.
+Movie trailers were originally shown after the movie, which is why they're called "trailers."
+Hawaiian pizza is a Canadian invention.
+The smallest bone in your body is in your ear.
+Tennis players can be fined up to $20,000 for swearing while playing at Wimbledon.
+Only 5% of the ocean has been explored.
+Most people fart around 14 to 23 times a day!
+There is a species of spider called the Hobo Spider.
+A lion's roar can be heard from 5 miles away.
+Saint Lucia is the only country in the world named after a woman.
+The national animal of Scotland is a unicorn.
+The United States Navy used Xbox controllers for their periscopes.
+The word "burrito" means "little donkey" in Spanish.
+A baby octopus is about the size of a flea when it is born.
+A sheep, a duck, and a rooster were the first passengers to take a trip in a hot air balloon.
+In Uganda, around 48% of the population is under 15 years of age.
+On average, men get bored of a shopping trip after 26 minutes.
+In the 16th Century, Turkish women could initiate divorce if their husbands didn't provide enough coffee.
+Recycling just one tin can saves enough energy to watch television for 3 hours.
+After the premiere of 16 and Pregnant, teen pregnancy rates dropped.
+Squirrels cause approximately 10-20% of US power outages.
+Facebook, Instagram, and Twitter are all banned in China.
+95% of people text things they could never say in person.
+Honeybees can recognize human faces.
+The Battle of Hastings didn't actually take place in Hastings.
+Human blood cells have different lifespans.
+A swarm of 20,000 bees followed a car for two days because their queen was stuck inside.
+Eating carrots can turn your skin orange.
+Bob Dylan's birth name was Robert Zimmerman.
+A crocodile can't poke its tongue out.
+Sea otters hold hands when they sleep so they don't drift away from each other.
+A small child could swim through the veins of a blue whale.
+The word "y'all" dates back to at least 1631.
+J.K. Rowling chose the unusual name "Hermione" so young girls wouldn't be teased for being nerdy.
+Hewlett-Packard's (also known as HP) name was decided in a coin toss in 1939.
+There are a total of 1,710 steps in the Eiffel Tower.
+The names of the Pokémon Hitmonlee and Hitmonchan are based on Bruce Lee and Jackie Chan.
+Pigs are considered to be the world's fifth-smartest animal.
+Pirates wore earrings because they believed they improved their eyesight.
+Los Angeles original name is "El Pueblo de Nuestra Senora la Reina de Los Angeles de Porciuncula."
+The Twitter bird actually has a name – Larry.
+Octopuses actually have six arms and two legs!
+Pound cake got its name because the original recipe contained a pound of butter, sugar, flour, and eggs.
+There are only two times that we know of that snow fell in the Sahara desert.
+Mike Tyson once offered a zoo attendant $10,000 to let him fight a gorilla.
+ABBA turned down 1 billion dollars to do a reunion tour.
+Abraham Lincoln fed his cat with a gold fork.
+There is a nut on a helicopter nicknamed the "Jesus Nut."
+Some insects and small birds see the world in slow motion.
+A goat called William Windsor served as a Lance Corporal in the British Army.
+The most venomous jellyfish in the world is the Irukandji.
+March 20th is known as Snowman Burning Day.
+Queen Elizabeth II wasn't allowed to sit on the Iron Throne from Game of Thrones.
+There is an official Wizard of New Zealand.
+An apple, potato, and onion taste the same if you eat them with your nose plugged.
+The longest word you're likely to encounter on an everyday basis is "uncharacteristically."
+A company in Poland makes dinnerware out of wheat so you can eat your plate!
+The average person walks the equivalent of five times around the world in their lifetime.
+Michael Jackson offered to make a Harry Potter musical, but the offer was rejected.
+The world record for stuffing drinking straws into your mouth at once is 650.
+Nutella was invented shortly after WWII ended because chocolate was so expensive.
+North Korea has its own space program.
+According to Genesis 1:20-22, the chicken came before the egg.
+Ants leave maps for other ants when they walk.
+Tears contain a natural painkiller, which reduces pain and improves your mood.
+Saturn is the only planet in our solar system that could float in water.
+Male cats have longer tails than female cats.
+Dolly Parton lost in a Dolly Parton look-alike contest.
+George W. Bush was once a cheerleader.
+In total, there are 205 bones in the skeleton of a horse.
+Coca-Cola once bought all the website URLs that can be read as ahh, all the way up to 62 h's.
+Each year there are more than 40,000 toilet-related injuries in the US.
+Strawberries can be red, yellow, green, or white.
+Walt Disney World is the second-largest buyer of fireworks in the US.
+Four people lived in a home for six months infested with over 2,000 venomous spiders.
+If you fell into a volcano, you'd float on the lava instead of melting.
+In June 2017, the Facebook community reached 2 billion active users.
+Samuel L. Jackson requested a purple lightsaber in Star Wars to accept the part of Mace Windu.
+The giant stone heads on Easter Island have hidden bodies!
+Kleenex tissues were originally used as filters in gas masks.
+In 1998, Sony accidentally sold 700,000 camcorders that could see through people's clothes.
+During your lifetime, you will spend around seventy-nine days brushing your teeth.
+Ronald McDonald is "Donald McDonald" in Japan because it makes pronunciation easier for the Japanese.
