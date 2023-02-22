@@ -32,7 +32,7 @@ def get_fact(filter_enabled: bool = True, only_unsafe: bool = False) -> str:
 
 	only_unsafe : bool
 		The `only_unsafe` parameter determines if the function will only give
-		unsafe facts. Takes precedence over the `filter_enabled` argument.
+		unsafe (NSFW) facts. Takes precedence over the `filter_enabled` argument.
 
 	Returns
 	------

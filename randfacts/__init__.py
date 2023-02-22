@@ -1,21 +1,21 @@
 """Module to generate random facts.
 
 randfacts provides an interface to a list of facts installed with the module.
-You can retrieve facts via the getFact method. randfacts also allows for
+You can retrieve facts via the get_fact method. randfacts also allows for
 execution via the command line. See the examples section for more details.
 
 Code Examples:
 		Example usage of randfacts in code.
 
-		Generate a random safe fact.
+		Generate a random SFW (safe for work) fact.
 
 			>>> randfacts.get_fact()
 
-		Generate a random unsafe fact.
+		Generate a random NSFW (not safe for work) fact.
 
 			>>> randfacts.get_fact(only_unsafe=True)
 
-		Generate a random mixed fact (possibility of both safe and unsafe facts)
+		Generate a random mixed fact (possibility of both SFW and NSFW facts)
 
 			>>> randfacts.get_fact(False)
 			>>> # or
@@ -32,7 +32,7 @@ CLI Examples:
 
 		$ python3 -m randfacts --unsafe
 
-	The mixed argument can be provided to provide both safe and unsafe facts.
+	The mixed argument can be provided to provide both SFW and NSFW facts.
 
 		$ python3 -m randfacts --mixed
 

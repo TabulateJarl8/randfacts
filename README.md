@@ -29,7 +29,7 @@ $ pip3 install randfacts
 
 Via your AUR helper, like paru:
 ```sh
-paru -S python-randfacts
+$ paru -S python-randfacts
 ```
 
 Or manually
@@ -45,7 +45,7 @@ import randfacts
 x = randfacts.get_fact()
 print(x)
 ```
-will print a random fact like:
+The above example will print a random fact like:
 `Penguins can't taste sweet or savory flavors, only sour and salty ones`
 
 This package has a filter option to filter out potentially inappropriate facts. The filter is on by default. To disable the filter, you can just set the `filter_enabled` parameter to `False`.
@@ -69,19 +69,19 @@ If you want to access the list of facts directly, you can just import the `safe_
 
 randfacts can be executed via the command line with the following commands:
 
-Normal execution; only safe facts
+Normal execution; only SFW (safe for work) facts
 
 ```sh
 $ python3 -m randfacts
 ```
 
-The unsafe argument can be supplied to provide only unsafe facts
+The unsafe argument can be supplied to provide only NSFW (not safe for work) facts
 
 ```sh
 $ python3 -m randfacts --unsafe
 ```
 
-The mixed argument can be provided to provide both safe and unsafe facts.
+The mixed argument can be provided to provide both SFW and NSFW facts.
 
 ```sh
 $ python3 -m randfacts --mixed
