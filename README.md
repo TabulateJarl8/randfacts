@@ -11,6 +11,8 @@
 	<a href="https://github.com/TabulateJarl8/randfacts/actions/workflows/main.yml"><img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/TabulateJarl8/randfacts/main.yml?branch=master&label=Duplicate%20Facts%20Test" /></a>
 	<a href="https://github.com/TabulateJarl8"><img alt="GitHub followers" src="https://img.shields.io/github/followers/TabulateJarl8?style=social" /></a>
 	<a href="https://github.com/TabulateJarl8/randfacts"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/TabulateJarl8/randfacts?style=social" /></a>
+	<br>
+	<a href="https://ko-fi.com/L4L3L7IO2"><img alt="Kofi Badge" src="https://ko-fi.com/img/githubbutton_sm.svg" /></a>
 </p>
 
 Randfacts is a Python module that generates random facts. You can use `randfacts.get_fact()` to return a random fun fact. Disclaimer: Facts are not guaranteed to be true.
