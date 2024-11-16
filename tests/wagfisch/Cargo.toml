@@ -16,5 +16,8 @@ rayon = "1.10.0"
 
 [profile.release]
 codegen-units = 1
-lto = "fat"
+lto = true
+opt-level = 3
+split-debuginfo = 'off'
+incremental = false
 panic = "abort"

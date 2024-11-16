@@ -1,6 +1,7 @@
 use std::{
+    fmt,
     fs::File,
-    io::{BufRead, BufReader},
+    io::{BufRead, BufReader, Write},
     path::PathBuf,
     process::Command,
 };
@@ -11,7 +12,40 @@ use itertools::Itertools;
 use rayon::iter::ParallelIterator;
 use rayon::prelude::*;
 
+type DuplicateFactMatch = (Fact, Fact, f64);
 const INITIAL_VEC_CAPACITY: usize = 1000;
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+enum FactClass {
+    Safe,
+    Unsafe,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+struct Fact {
+    fact: String,
+    class: FactClass,
+    line_number: usize,
+}
+
+impl Fact {
+    pub fn new(fact: &str, class: FactClass, line_number: usize) -> Self {
+        Self {
+            fact: fact.to_owned(),
+            class,
+            line_number,
+        }
+    }
+}
+
+impl fmt::Display for FactClass {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            FactClass::Safe => write!(f, "Safe"),
+            FactClass::Unsafe => write!(f, "Unsafe"),
+        }
+    }
+}
 
 #[inline(always)]
 fn token_sort_ratio(str1: &str, str2: &str) -> f64 {
@@ -40,11 +74,13 @@ fn token_sort_ratio(str1: &str, str2: &str) -> f64 {
 
 #[inline(always)]
 fn wagner_fischer_2row(s1: &[char], s2: &[char]) -> usize {
+    // Always make s1 the shorter string
     let (s1, s2) = if s1.len() < s2.len() {
         (s1, s2)
     } else {
         (s2, s1)
     };
+
     let len1 = s1.len();
     let len2 = s2.len();
 
@@ -81,24 +117,7 @@ fn wagner_fischer_2row(s1: &[char], s2: &[char]) -> usize {
     prev_row[len2]
 }
 
-fn lines_from_file(filename: &PathBuf, comment: &str) -> Vec<(String, String)> {
-    let file = File::open(filename).expect("no such file");
-    let buf = BufReader::new(file);
-    buf.lines()
-        .map(|l| (l.expect("Could not parse line"), comment.to_string()))
-        .collect()
-}
-
-fn main() {
-    let m = command!()
-        .arg(
-            Arg::new("fix_duplicates")
-                .long("fix-duplicates")
-                .action(ArgAction::SetTrue)
-                .help("Remove duplicate facts"),
-        )
-        .get_matches();
-
+fn get_project_path(filename: &str) -> PathBuf {
     // get project's top level
     let output = Command::new("git")
         .args(["rev-parse", "--show-toplevel"])
@@ -109,17 +128,36 @@ fn main() {
         panic!("Error:  {}", String::from_utf8_lossy(&output.stderr));
     }
 
-    // read safe.txt and unsafe.txt into lists
     let mut project_root: PathBuf = PathBuf::from(String::from_utf8(output.stdout).unwrap().trim());
+
     project_root.push("randfacts");
-    project_root.push("safe.txt");
+    project_root.push(filename);
+    project_root
+}
 
-    let mut all_facts = lines_from_file(&project_root, "safe");
+fn write_facts_to_file(filename: &str, facts: Vec<Fact>) {
+    let mut file = File::create(get_project_path(filename)).expect("no such file");
+    for fact in facts {
+        writeln!(file, "{}", fact.fact).expect("error writing file");
+    }
+}
 
-    project_root.pop();
-    project_root.push("unsafe.txt");
+fn load_fact_list(filename: &str, comment: FactClass) -> Vec<Fact> {
+    let file = File::open(get_project_path(filename)).expect("no such file");
+    let buf = BufReader::new(file);
+    buf.lines()
+        .enumerate()
+        .map(|(line_number, line)| {
+            Fact::new(&line.expect("Could not parse line"), comment, line_number)
+        })
+        .collect()
+}
 
-    let mut unsafe_contents = lines_from_file(&project_root, "unsafe");
+fn find_duplicate_facts() -> Vec<DuplicateFactMatch> {
+    // read safe.txt and unsafe.txt into lists
+    let mut all_facts = load_fact_list("safe.txt", FactClass::Safe);
+
+    let mut unsafe_contents = load_fact_list("unsafe.txt", FactClass::Unsafe);
 
     all_facts.append(&mut unsafe_contents);
 
@@ -127,7 +165,6 @@ fn main() {
     // combined
     let total_facts = all_facts.len() as u64;
     let total_combinations = num_integer::binomial(total_facts as u64, 2);
-    println!("facts: {}, comb: {}", total_facts, total_combinations);
 
     let pb = ProgressBar::new(total_combinations);
     pb.set_style(
@@ -145,7 +182,7 @@ fn main() {
         .par_bridge()
         .progress_with(pb)
         .filter_map(|facts| {
-            let ratio = token_sort_ratio(&facts[0].0, &facts[1].0);
+            let ratio = token_sort_ratio(&facts[0].fact, &facts[1].fact);
             if ratio > 82.5 {
                 Some((facts[0].clone(), facts[1].clone(), ratio))
             } else {
@@ -153,5 +190,57 @@ fn main() {
             }
         })
         .collect();
-    println!("{:?}", matches);
+    matches
+}
+
+fn main() {
+    let args = command!()
+        .arg(
+            Arg::new("fix_duplicates")
+                .long("fix-duplicates")
+                .action(ArgAction::SetTrue)
+                .help("Remove duplicate facts"),
+        )
+        .get_matches();
+
+    let matches = find_duplicate_facts();
+
+    if !matches.is_empty() {
+        if !args.get_flag("fix_duplicates") {
+            println!("{:#?}", matches);
+            println!("\nNumber of similar facts: {}", matches.len());
+        } else {
+            println!("Generating list of indicies to remove...");
+            let mut indicies_to_remove = vec![];
+            for fact_match in matches {
+                println!("{:#?}", fact_match);
+
+                // keep unsafe facts over safe facts
+                if fact_match.0.class == FactClass::Unsafe {
+                    indicies_to_remove.push((fact_match.0.line_number, fact_match.0.class));
+                } else {
+                    // first fact isn't unsafe so we don't need to prioritize it
+                    indicies_to_remove.push((fact_match.1.line_number, fact_match.1.class));
+                }
+            }
+
+            // remove all indicies from combinations
+            let mut safe_facts = load_fact_list("safe.txt", FactClass::Safe);
+            let mut unsafe_facts = load_fact_list("unsafe.txt", FactClass::Unsafe);
+
+            // sort removal indicies in reverse so that file lines dont get messed up
+            indicies_to_remove.sort_by(|a, b| b.0.partial_cmp(&a.0).unwrap());
+
+            // remove one of the duplicate facts from the files
+            for (index, class) in indicies_to_remove {
+                _ = match class {
+                    FactClass::Safe => safe_facts.remove(index),
+                    FactClass::Unsafe => unsafe_facts.remove(index),
+                }
+            }
+
+            write_facts_to_file("safe_new.txt", safe_facts);
+            write_facts_to_file("unsafe_new.txt", unsafe_facts);
+        }
+    }
 }
