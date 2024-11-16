@@ -11,11 +11,13 @@ use itertools::Itertools;
 use rayon::iter::ParallelIterator;
 use rayon::prelude::*;
 
+const INITIAL_VEC_CAPACITY: usize = 1000;
+
 #[inline(always)]
 fn token_sort_ratio(str1: &str, str2: &str) -> f64 {
     // Preallocate vectors with capacity
-    let mut vec1 = Vec::with_capacity(str1.len());
-    let mut vec2 = Vec::with_capacity(str2.len());
+    let mut vec1 = Vec::with_capacity(INITIAL_VEC_CAPACITY);
+    let mut vec2 = Vec::with_capacity(INITIAL_VEC_CAPACITY);
 
     // Filter and collect characters in one pass
     str1.chars()
@@ -36,41 +38,13 @@ fn token_sort_ratio(str1: &str, str2: &str) -> f64 {
     (1.0 - (dist / maximum as f64)) * 100.0 - 5.0
 }
 
-// Custom Levenshtein implementation optimized for our use case
-#[inline(always)]
-fn levenshtein(s1: &[char], s2: &[char]) -> usize {
-    if s1.len() > s2.len() {
-        return levenshtein(s2, s1);
-    }
-
-    let len1 = s1.len();
-    let len2 = s2.len();
-
-    let mut column = Vec::with_capacity(len1 + 1);
-    for i in 0..=len1 {
-        column.push(i);
-    }
-
-    for j in 1..=len2 {
-        let mut previous = column[0];
-        column[0] = j;
-
-        for i in 1..=len1 {
-            let old = column[i];
-            column[i] = if s1[i - 1] == s2[j - 1] {
-                previous
-            } else {
-                1 + previous.min(column[i - 1]).min(column[i])
-            };
-            previous = old;
-        }
-    }
-
-    column[len1]
-}
-
 #[inline(always)]
 fn wagner_fischer_2row(s1: &[char], s2: &[char]) -> usize {
+    let (s1, s2) = if s1.len() < s2.len() {
+        (s1, s2)
+    } else {
+        (s2, s1)
+    };
     let len1 = s1.len();
     let len2 = s2.len();
 
@@ -84,16 +58,24 @@ fn wagner_fischer_2row(s1: &[char], s2: &[char]) -> usize {
     let mut prev_row = (0..=len2).collect::<Vec<_>>();
     let mut curr_row = vec![0; len2 + 1];
 
-    for i in 1..=len1 {
-        curr_row[0] = i;
-        for j in 1..=len2 {
-            curr_row[j] = if s1[i - 1] == s2[j - 1] {
-                prev_row[j - 1]
+    // Initialize first row
+    for i in 0..=len2 {
+        prev_row[i] = i;
+    }
+
+    for (i, c1) in s1.iter().enumerate() {
+        curr_row[0] = i + 1;
+
+        for (j, c2) in s2.iter().enumerate() {
+            curr_row[j + 1] = if c1 == c2 {
+                prev_row[j]
             } else {
-                1 + prev_row[j - 1].min(prev_row[j]).min(curr_row[j - 1])
+                1 + prev_row[j].min(prev_row[j + 1]).min(curr_row[j])
             };
         }
-        std::mem::swap(&mut prev_row, &mut curr_row);
+
+        // Swap rows using copy_from_slice for better performance
+        prev_row[..=len2].copy_from_slice(&curr_row[..=len2]);
     }
 
     prev_row[len2]
@@ -144,7 +126,7 @@ fn main() {
     // Generate all possible pairs of the facts from safe.txt and unsafe.txt
     // combined
     let total_facts = all_facts.len() as u64;
-    let total_combinations = num_integer::binomial(total_facts, 2);
+    let total_combinations = num_integer::binomial(total_facts as u64, 2);
     println!("facts: {}, comb: {}", total_facts, total_combinations);
 
     let pb = ProgressBar::new(total_combinations);
@@ -171,4 +153,5 @@ fn main() {
             }
         })
         .collect();
+    println!("{:?}", matches);
 }
