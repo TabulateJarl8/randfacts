@@ -4,6 +4,7 @@ use std::{
     io::{BufRead, BufReader, Write},
     path::PathBuf,
     process::Command,
+    sync::Arc,
 };
 
 use clap::{command, Arg, ArgAction};
@@ -23,15 +24,15 @@ enum FactClass {
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 struct Fact {
-    fact: String,
+    fact: Arc<String>,
     class: FactClass,
     line_number: usize,
 }
 
 impl Fact {
-    pub fn new(fact: &str, class: FactClass, line_number: usize) -> Self {
+    pub fn new(fact: String, class: FactClass, line_number: usize) -> Self {
         Self {
-            fact: fact.to_owned(),
+            fact: Arc::new(fact),
             class,
             line_number,
         }
@@ -148,7 +149,7 @@ fn load_fact_list(filename: &str, comment: FactClass) -> Vec<Fact> {
     buf.lines()
         .enumerate()
         .map(|(line_number, line)| {
-            Fact::new(&line.expect("Could not parse line"), comment, line_number)
+            Fact::new(line.expect("Could not parse line"), comment, line_number)
         })
         .collect()
 }
@@ -239,8 +240,8 @@ fn main() {
                 }
             }
 
-            write_facts_to_file("safe_new.txt", safe_facts);
-            write_facts_to_file("unsafe_new.txt", unsafe_facts);
+            write_facts_to_file("safe.txt", safe_facts);
+            write_facts_to_file("unsafe.txt", unsafe_facts);
         }
     }
 }
