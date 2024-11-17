@@ -1,7 +1,7 @@
 use std::{
     fmt,
     fs::File,
-    io::{BufRead, BufReader, Write},
+    io::{BufRead, BufReader, BufWriter, Write},
     path::PathBuf,
     process::Command,
     sync::Arc,
@@ -9,12 +9,11 @@ use std::{
 
 use clap::{command, Arg, ArgAction};
 use indicatif::{ParallelProgressIterator, ProgressBar, ProgressStyle};
-use itertools::Itertools;
 use rayon::iter::ParallelIterator;
 use rayon::prelude::*;
 
 type DuplicateFactMatch = (Fact, Fact, f64);
-const INITIAL_VEC_CAPACITY: usize = 1000;
+const SIMILARITY_THRESHOLD: f64 = 82.5;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 enum FactClass {
@@ -50,17 +49,27 @@ impl fmt::Display for FactClass {
 
 #[inline(always)]
 fn token_sort_ratio(str1: &str, str2: &str) -> f64 {
+    let len1 = str1.len();
+    let len2 = str2.len();
+
+    // Early exit for obviously different strings
+    // if their lengths differ by more than half, they're most likely different enough
+    // this may lead to issues, but it lead to a ~23.33% performance improvement
+    if (len1 as f64 / len2 as f64) < 0.5 || (len2 as f64 / len1 as f64) < 0.5 {
+        return 0.0;
+    }
+
     // Preallocate vectors with capacity
-    let mut vec1 = Vec::with_capacity(INITIAL_VEC_CAPACITY);
-    let mut vec2 = Vec::with_capacity(INITIAL_VEC_CAPACITY);
+    let mut vec1 = Vec::with_capacity(len1);
+    let mut vec2 = Vec::with_capacity(len2);
 
     // Filter and collect characters in one pass
     str1.chars()
         .filter(|c| c.is_ascii_alphanumeric())
-        .for_each(|c| vec1.push(c));
+        .for_each(|c| vec1.push(c.to_ascii_lowercase()));
     str2.chars()
         .filter(|c| c.is_ascii_alphanumeric())
-        .for_each(|c| vec2.push(c));
+        .for_each(|c| vec2.push(c.to_ascii_lowercase()));
 
     // Calculate Levenshtein distance directly on character vectors
     let dist = wagner_fischer_2row(&vec1, &vec2) as f64;
@@ -137,9 +146,11 @@ fn get_project_path(filename: &str) -> PathBuf {
 }
 
 fn write_facts_to_file(filename: &str, facts: Vec<Fact>) {
-    let mut file = File::create(get_project_path(filename)).expect("no such file");
+    let file = File::create(get_project_path(filename)).expect("no such file");
+    let mut writer = BufWriter::new(file);
+
     for fact in facts {
-        writeln!(file, "{}", fact.fact).expect("error writing file");
+        writeln!(writer, "{}", fact.fact).expect("error writing file");
     }
 }
 
@@ -176,22 +187,28 @@ fn find_duplicate_facts() -> Vec<DuplicateFactMatch> {
             .unwrap(),
     );
 
-    // iterate through all the combinations
-    let matches: Vec<_> = all_facts
-        .into_iter()
-        .combinations(2)
-        .par_bridge()
+    // Generate all possible indices combinations
+    let indices: Vec<_> = (0..all_facts.len())
+        .flat_map(|i| ((i + 1)..all_facts.len()).map(move |j| (i, j)))
+        .collect();
+
+    // Process combinations in parallel
+    indices
+        .into_par_iter()
         .progress_with(pb)
-        .filter_map(|facts| {
-            let ratio = token_sort_ratio(&facts[0].fact, &facts[1].fact);
-            if ratio > 82.5 {
-                Some((facts[0].clone(), facts[1].clone(), ratio))
+        .filter_map(|(i, j)| {
+            let facts = &all_facts;
+            let fact1 = &facts[i];
+            let fact2 = &facts[j];
+
+            let ratio = token_sort_ratio(&fact1.fact, &fact2.fact);
+            if ratio > SIMILARITY_THRESHOLD {
+                Some((fact1.clone(), fact2.clone(), ratio))
             } else {
                 None
             }
         })
-        .collect();
-    matches
+        .collect()
 }
 
 fn main() {
