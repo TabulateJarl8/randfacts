@@ -1,51 +1,11 @@
-use std::{
-    fmt,
-    fs::File,
-    io::{BufRead, BufReader, BufWriter, Write},
-    path::PathBuf,
-    process::Command,
-    sync::Arc,
-};
-
 use clap::{command, Arg, ArgAction};
 use indicatif::{ParallelProgressIterator, ProgressBar, ProgressStyle};
 use rayon::iter::ParallelIterator;
 use rayon::prelude::*;
+use structures::{DuplicateFactMatch, FactClass, SIMILARITY_THRESHOLD};
 
-type DuplicateFactMatch = (Fact, Fact, f64);
-const SIMILARITY_THRESHOLD: f64 = 82.5;
-
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
-enum FactClass {
-    Safe,
-    Unsafe,
-}
-
-#[derive(Debug, Clone, PartialEq, Eq)]
-struct Fact {
-    fact: Arc<String>,
-    class: FactClass,
-    line_number: usize,
-}
-
-impl Fact {
-    pub fn new(fact: String, class: FactClass, line_number: usize) -> Self {
-        Self {
-            fact: Arc::new(fact),
-            class,
-            line_number,
-        }
-    }
-}
-
-impl fmt::Display for FactClass {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        match self {
-            FactClass::Safe => write!(f, "Safe"),
-            FactClass::Unsafe => write!(f, "Unsafe"),
-        }
-    }
-}
+mod structures;
+mod util;
 
 #[inline(always)]
 fn token_sort_ratio(str1: &str, str2: &str) -> f64 {
@@ -127,49 +87,11 @@ fn wagner_fischer_2row(s1: &[char], s2: &[char]) -> usize {
     prev_row[len2]
 }
 
-fn get_project_path(filename: &str) -> PathBuf {
-    // get project's top level
-    let output = Command::new("git")
-        .args(["rev-parse", "--show-toplevel"])
-        .output()
-        .expect("failed to execute git process");
-
-    if !output.status.success() {
-        panic!("Error:  {}", String::from_utf8_lossy(&output.stderr));
-    }
-
-    let mut project_root: PathBuf = PathBuf::from(String::from_utf8(output.stdout).unwrap().trim());
-
-    project_root.push("randfacts");
-    project_root.push(filename);
-    project_root
-}
-
-fn write_facts_to_file(filename: &str, facts: &[Fact]) {
-    let file = File::create(get_project_path(filename)).expect("no such file");
-    let mut writer = BufWriter::new(file);
-
-    for fact in facts {
-        writeln!(writer, "{}", fact.fact).expect("error writing file");
-    }
-}
-
-fn load_fact_list(filename: &str, comment: FactClass) -> Vec<Fact> {
-    let file = File::open(get_project_path(filename)).expect("no such file");
-    let buf = BufReader::new(file);
-    buf.lines()
-        .enumerate()
-        .map(|(line_number, line)| {
-            Fact::new(line.expect("Could not parse line"), comment, line_number)
-        })
-        .collect()
-}
-
 fn find_duplicate_facts() -> Vec<DuplicateFactMatch> {
     // read safe.txt and unsafe.txt into lists
-    let mut all_facts = load_fact_list("safe.txt", FactClass::Safe);
+    let mut all_facts = util::load_fact_list("safe.txt", FactClass::Safe);
 
-    let mut unsafe_contents = load_fact_list("unsafe.txt", FactClass::Unsafe);
+    let mut unsafe_contents = util::load_fact_list("unsafe.txt", FactClass::Unsafe);
 
     all_facts.append(&mut unsafe_contents);
 
@@ -243,8 +165,8 @@ fn main() {
             }
 
             // remove all indicies from combinations
-            let mut safe_facts = load_fact_list("safe.txt", FactClass::Safe);
-            let mut unsafe_facts = load_fact_list("unsafe.txt", FactClass::Unsafe);
+            let mut safe_facts = util::load_fact_list("safe.txt", FactClass::Safe);
+            let mut unsafe_facts = util::load_fact_list("unsafe.txt", FactClass::Unsafe);
 
             // sort removal indicies in reverse so that file lines dont get messed up
             indicies_to_remove.sort_unstable_by(|a, b| b.0.partial_cmp(&a.0).unwrap());
@@ -257,8 +179,8 @@ fn main() {
                 };
             }
 
-            write_facts_to_file("safe.txt", &safe_facts);
-            write_facts_to_file("unsafe.txt", &unsafe_facts);
+            util::write_facts_to_file("safe.txt", &safe_facts);
+            util::write_facts_to_file("unsafe.txt", &unsafe_facts);
         }
     }
 }
