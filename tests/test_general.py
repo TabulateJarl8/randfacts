@@ -5,7 +5,7 @@ import sys
 import pytest
 
 sys.path.insert(1, str(pathlib.Path(__file__).parents[1]))
-from randfacts import (
+from randfacts import (  # noqa: E402
     getFact,
     randfacts,  # local randfacts instead of installed version
 )
