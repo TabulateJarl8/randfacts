@@ -71,7 +71,7 @@ fn token_sort_ratio(str1: &str, str2: &str) -> f64 {
         .filter(|c| c.is_ascii_alphanumeric())
         .for_each(|c| vec2.push(c.to_ascii_lowercase()));
 
-    // Calculate Levenshtein distance directly on character vectors
+    // Calculate wagner fischer directly on character vectors
     let dist = wagner_fischer_2row(&vec1, &vec2) as f64;
     let maximum = vec1.len() + vec2.len();
 
@@ -101,13 +101,13 @@ fn wagner_fischer_2row(s1: &[char], s2: &[char]) -> usize {
         return len1;
     }
 
-    let mut prev_row = (0..=len2).collect::<Vec<_>>();
+    let mut prev_row = vec![0; len2 + 1];
     let mut curr_row = vec![0; len2 + 1];
 
     // Initialize first row
-    for i in 0..=len2 {
+    (0..=len2).for_each(|i| {
         prev_row[i] = i;
-    }
+    });
 
     for (i, c1) in s1.iter().enumerate() {
         curr_row[0] = i + 1;
@@ -120,8 +120,8 @@ fn wagner_fischer_2row(s1: &[char], s2: &[char]) -> usize {
             };
         }
 
-        // Swap rows using copy_from_slice for better performance
-        prev_row[..=len2].copy_from_slice(&curr_row[..=len2]);
+        // Swap rows using mem::swap for better performance
+        std::mem::swap(&mut prev_row, &mut curr_row);
     }
 
     prev_row[len2]
@@ -145,7 +145,7 @@ fn get_project_path(filename: &str) -> PathBuf {
     project_root
 }
 
-fn write_facts_to_file(filename: &str, facts: Vec<Fact>) {
+fn write_facts_to_file(filename: &str, facts: &[Fact]) {
     let file = File::create(get_project_path(filename)).expect("no such file");
     let mut writer = BufWriter::new(file);
 
@@ -247,18 +247,18 @@ fn main() {
             let mut unsafe_facts = load_fact_list("unsafe.txt", FactClass::Unsafe);
 
             // sort removal indicies in reverse so that file lines dont get messed up
-            indicies_to_remove.sort_by(|a, b| b.0.partial_cmp(&a.0).unwrap());
+            indicies_to_remove.sort_unstable_by(|a, b| b.0.partial_cmp(&a.0).unwrap());
 
             // remove one of the duplicate facts from the files
             for (index, class) in indicies_to_remove {
-                _ = match class {
+                match class {
                     FactClass::Safe => safe_facts.remove(index),
                     FactClass::Unsafe => unsafe_facts.remove(index),
-                }
+                };
             }
 
-            write_facts_to_file("safe.txt", safe_facts);
-            write_facts_to_file("unsafe.txt", unsafe_facts);
+            write_facts_to_file("safe.txt", &safe_facts);
+            write_facts_to_file("unsafe.txt", &unsafe_facts);
         }
     }
 }
