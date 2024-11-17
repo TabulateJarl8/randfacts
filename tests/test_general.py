@@ -1,3 +1,5 @@
+"""General functionality unit tests."""
+
 import pathlib
 import subprocess
 import sys
@@ -12,33 +14,47 @@ from randfacts import (
 
 
 def test_get_fact() -> None:
+	"""Make sure get_fact works without extra arguments."""
 	assert isinstance(randfacts.get_fact(), str), "get_fact() must return a string"
 
 
-def test_getFact_deprecated() -> None:
+def test_getFact_deprecated() -> None:  # noqa: N802
+	"""Make sure getFact throws a deprecation warning."""
 	with pytest.deprecated_call():
 		_ = getFact()
 
 
 def test_all_facts_list() -> None:
+	"""Test that all_facts list is present in the module."""
 	assert isinstance(randfacts.all_facts, list), "all_facts must be a list"
 
 
 def test_safe_facts_list() -> None:
+	"""Test that safe_facts list is present in the module."""
 	assert isinstance(randfacts.safe_facts, list), "safe_facts must be a list"
 
 
 def test_unsafe_facts_list() -> None:
+	"""Test that unsafe_facts list is present in the module."""
 	assert isinstance(randfacts.unsafe_facts, list), "unsafe_facts must be a list"
 
 
 def test_cli_no_args() -> None:
+	"""Test that a basic randfacts CLI call will work."""
 	child = subprocess.Popen(["python3", "-m", "randfacts"], stdout=subprocess.DEVNULL)
 	child.communicate()
 	assert child.returncode == 0, "`python3 -m randfacts` must return with exit code 0"
 
 
+def test_cli_script_installed() -> None:
+	"""Test that the `randfacts` script is installed to the PATH."""
+	child = subprocess.Popen(["randfacts"], stdout=subprocess.DEVNULL)
+	child.communicate()
+	assert child.returncode == 0, "`randfacts` must return with exit code 0"
+
+
 def test_cli_unsafe_args() -> None:
+	"""Test that CLI with --unsafe works."""
 	child = subprocess.Popen(
 		["python3", "-m", "randfacts", "--unsafe"],
 		stdout=subprocess.DEVNULL,
@@ -50,6 +66,7 @@ def test_cli_unsafe_args() -> None:
 
 
 def test_cli_mixed_args() -> None:
+	"""Test that CLI with --mixed works."""
 	child = subprocess.Popen(
 		["python3", "-m", "randfacts", "--mixed"],
 		stdout=subprocess.DEVNULL,
@@ -61,6 +78,7 @@ def test_cli_mixed_args() -> None:
 
 
 def test_cli_version() -> None:
+	"""Test that CLI with --version returns the correct version."""
 	child = subprocess.Popen(
 		["python3", "-m", "randfacts", "--version"],
 		stdout=subprocess.PIPE,
@@ -73,6 +91,7 @@ def test_cli_version() -> None:
 
 
 def test_main_entrypoint() -> None:
+	"""Test the main entrypoint in randfacts.py."""
 	# Path to the module or script you want to test
 	script_path = (
 		pathlib.Path(__file__).resolve().parents[1] / "randfacts" / "randfacts.py"
@@ -90,8 +109,12 @@ def test_main_entrypoint() -> None:
 	assert result.returncode == 0, f"Script failed with stderr: {result.stderr}"
 
 
-@pytest.mark.parametrize("bad_char", ["‘", "’", "“", "”", "…", "—"])
+@pytest.mark.parametrize("bad_char", ["‘", "’", "“", "”", "…", "—"])  # noqa: RUF001
 def test_invalid_characters(bad_char: str) -> None:
+	"""Make sure no invalid characters are present in the fact lists.
+
+	If this test fails, try running `fix_encoding.py`
+	"""
 	for index, fact in enumerate(randfacts.all_facts):
 		assert (
 			bad_char not in fact

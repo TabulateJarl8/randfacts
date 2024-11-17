@@ -68,7 +68,17 @@ ignore = [
 
 
 [tool.ruff.lint.per-file-ignores]
-"tests/*" = ["S101", "ANN001", "ANN002", "PLC2701", "ARG002", "PLR2004", "DOC"]
+"tests/*" = [
+    "S101",
+    "ANN001",
+    "ANN002",
+    "PLC2701",
+    "ARG002",
+    "PLR2004",
+    "DOC",
+    "INP001",
+    "S",
+]
 "randfacts/randfacts.py" = ["T201"]
 "randfacts/__main__.py" = ["D100"]
 
