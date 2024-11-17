@@ -191,7 +191,7 @@ fn main() {
         if !args.get_flag("fix_duplicates") {
             println!("{:#?}", matches);
             println!("\nNumber of similar facts: {}", matches.len());
-            return;
+            std::process::exit(1);
         }
 
         // Fix mode: Remove duplicates

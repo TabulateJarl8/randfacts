@@ -1,26 +1,33 @@
-import os
+from pathlib import Path
 
-parent = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+parent = Path(__file__).resolve().parent.parent
 
-safe_path = os.path.join(parent, 'randfacts', 'safe.txt')
-unsafe_path = os.path.join(parent, 'randfacts', 'unsafe.txt')
+safe_path = parent / "randfacts" / "safe.txt"
+unsafe_path = parent / "randfacts" / "unsafe.txt"
 
-bad_characters = [("‘", "'"), ("’", "'"), ("“", '"'), ("”", '"'), ("…", "..."), ('—', '-')]
+bad_characters = [
+    ("‘", "'"),
+    ("’", "'"),
+    ("“", '"'),
+    ("”", '"'),
+    ("…", "..."),
+    ("—", "-"),
+]
 
-with open(safe_path, encoding="utf-8") as f:
-	safe = f.read()
+with open(safe_path, "r+", encoding="utf-8") as f:
+    safe = f.read()
 
-for char in bad_characters:
-	safe = safe.replace(char[0], char[1])
+    for char in bad_characters:
+        safe = safe.replace(char[0], char[1])
 
-with open(safe_path, "w") as f:
-	f.write(safe)
+    f.seek(0)
+    f.write(safe)
 
-with open(unsafe_path, encoding="utf-8") as f:
-	unsafe = f.read()
+with open(unsafe_path, "r+", encoding="utf-8") as f:
+    unsafe = f.read()
 
-for char in bad_characters:
-	unsafe = unsafe.replace(char[0], char[1])
+    for char in bad_characters:
+        unsafe = unsafe.replace(char[0], char[1])
 
-with open(unsafe_path, "w") as f:
-	f.write(unsafe)
+    f.seek(0)
+    f.write(unsafe)

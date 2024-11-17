@@ -1,0 +1,45 @@
+[tool.poetry]
+name = "randfacts"
+version = "0.21.0"
+description = "Package to generate random facts"
+authors = ["TabulateJarl8 <tabulatejarl8@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+include = ["randfacts/*.txt"]
+homepage = "https://tabulate.tech/software/randfacts/"
+repository = "https://github.com/TabulateJarl8/randfacts"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Natural Language :: English",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+packages = [{ include = 'randfacts' }]
+
+[tool.poetry.scripts]
+randfacts = 'randfacts.randfacts:_cli_entrypoint'
+
+[tool.pyright]
+reportUnusedCallResult = false
+
+[tool.poetry.dependencies]
+python = "^3.6"
+
+[tool.poetry.group.dev.dependencies]
+ruff = { version = "^0.7.4", python = "^3.9" }
+pytest = { version = "^8.3.3", python = "^3.9" }
+pytest-cov = { version = "^6.0.0", python = "^3.9" }
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
