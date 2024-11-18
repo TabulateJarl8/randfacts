@@ -86,7 +86,7 @@ ignore = [
 convention = "google"
 
 [tool.ruff.format]
-quote-style = "single"
+quote-style = "double"
 indent-style = "tab"
 line-ending = "lf"
 
