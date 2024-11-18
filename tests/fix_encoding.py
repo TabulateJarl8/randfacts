@@ -1,26 +1,35 @@
-import os
+"""Fixes common encoding errors that can get into the fact lists after web scraping."""
 
-parent = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+from pathlib import Path
 
-safe_path = os.path.join(parent, 'randfacts', 'safe.txt')
-unsafe_path = os.path.join(parent, 'randfacts', 'unsafe.txt')
+parent = Path(__file__).resolve().parents[1]
 
-bad_characters = [("‘", "'"), ("’", "'"), ("“", '"'), ("”", '"'), ("…", "..."), ('—', '-')]
+safe_path = parent / "randfacts" / "safe.txt"
+unsafe_path = parent / "randfacts" / "unsafe.txt"
 
-with open(safe_path, encoding="utf-8") as f:
+bad_characters = [
+	("‘", "'"),  # noqa: RUF001
+	("’", "'"),  # noqa: RUF001
+	("“", '"'),
+	("”", '"'),
+	("…", "..."),
+	("—", "-"),
+]
+
+with safe_path.open("r+", encoding="utf-8") as f:
 	safe = f.read()
 
-for char in bad_characters:
-	safe = safe.replace(char[0], char[1])
+	for char in bad_characters:
+		safe = safe.replace(char[0], char[1])
 
-with open(safe_path, "w") as f:
+	f.seek(0)
 	f.write(safe)
 
-with open(unsafe_path, encoding="utf-8") as f:
+with unsafe_path.open("r+", encoding="utf-8") as f:
 	unsafe = f.read()
 
-for char in bad_characters:
-	unsafe = unsafe.replace(char[0], char[1])
+	for char in bad_characters:
+		unsafe = unsafe.replace(char[0], char[1])
 
-with open(unsafe_path, "w") as f:
+	f.seek(0)
 	f.write(unsafe)

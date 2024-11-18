@@ -1,0 +1,22 @@
+[package]
+name = "checkduplicates"
+version = "0.1.0"
+edition = "2021"
+authors = ["Connor Sample"]
+description = "randfacts check duplicates test"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+clap = { version = "4.4.18", features = ["cargo"] }
+indicatif = { version = "0.17.9", features = ["rayon"] }
+num-integer = "0.1.46"
+rayon = "1.10.0"
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = 3
+split-debuginfo = 'off'
+incremental = false
+panic = "abort"

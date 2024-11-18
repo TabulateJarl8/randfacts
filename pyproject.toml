@@ -1,0 +1,108 @@
+[tool.poetry]
+name = "randfacts"
+version = "0.22.0"
+description = "Package to generate random facts"
+authors = ["TabulateJarl8 <tabulatejarl8@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+include = ["randfacts/*.txt"]
+homepage = "https://tabulate.tech/software/randfacts/"
+repository = "https://github.com/TabulateJarl8/randfacts"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Natural Language :: English",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+packages = [{ include = 'randfacts' }]
+
+[tool.poetry.scripts]
+randfacts = 'randfacts.randfacts:_cli_entrypoint'
+
+[tool.pytest.ini_options]
+asyncio_default_fixture_loop_scope = "function"
+
+[tool.pyright]
+reportUnusedCallResult = false
+
+[tool.ruff.lint]
+preview = true
+select = ["ALL"]
+
+ignore = [
+    # complains about tab indentation
+    "W191",
+    "D206",
+    # adds a line break before a class docstring
+    "D203",
+    # puts the first line summary of a docstring on a different line than the """
+    "D213",
+    # tries to add a blank line after the last docstring section
+    "D413",
+    # yells at you if you use a bool typed function argument
+    "FBT001",
+    "FBT002",
+    # yells at you for using try-except in a for loop
+    "PERF203",
+    # allow for the use of Any
+    "ANN401",
+    # false positives for overriding methods (i think)
+    "PLR6301",
+    # disable too many branches check
+    "PLR0912",
+    # copyright at top of file
+    "CPY",
+    # complains about random.choice() not being good for cryptography
+    "S311",
+]
+
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = [
+    "S101",
+    "ANN001",
+    "ANN002",
+    "PLC2701",
+    "ARG002",
+    "PLR2004",
+    "DOC",
+    "INP001",
+    "S",
+]
+"randfacts/randfacts.py" = ["T201"]
+"randfacts/__main__.py" = ["D100"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "tab"
+line-ending = "lf"
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
+force-wrap-aliases = true
+order-by-type = true
+
+[tool.poetry.dependencies]
+python = "^3.6"
+
+[tool.poetry.group.dev.dependencies]
+ruff = { version = "^0.7.4", python = "^3.8" }
+pytest = { version = "^8.3.3", python = "^3.8" }
+pytest-cov = { version = "^5.0.0", python = "^3.8" }
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
