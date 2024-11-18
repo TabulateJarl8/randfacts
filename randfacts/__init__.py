@@ -7,18 +7,16 @@ execution via the command line. See the examples section for more details.
 Code Examples:
 				Example usage of randfacts in code.
 
-				generate a random sfw (safe for work) fact.
+				Generate a random SFW (safe for work) fact.
 
 						>>> randfacts.get_fact()
 
-				generate a random nsfw (not safe for work) fact.
+				Generate a random NSFW (not safe for work) fact.
 
-						>>> randfacts.get_fact(only_unsafe=true)
+						>>> randfacts.get_fact(only_unsafe=True)
 
-				generate a random mixed fact (possibility of both sfw and nsfw facts)
+				Generate a random mixed fact (possibility of both SFW and NSFW facts)
 
-						>>> randfacts.get_fact(false)
-						>>> # or
 						>>> randfacts.get_fact(filter_enabled=False)
 
 CLI Examples:
