@@ -84,6 +84,6 @@ jobs:
       # https://github.com/astral-sh/ruff/issues/8430
       # - run: poetry run ruff format --check
       - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v4.0.1
+        uses: codecov/codecov-action@v5.0.2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
