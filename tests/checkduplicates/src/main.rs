@@ -40,13 +40,18 @@ fn token_sort_ratio(str1: &str, str2: &str) -> f64 {
     let mut vec1 = Vec::with_capacity(len1);
     let mut vec2 = Vec::with_capacity(len2);
 
-    // Filter and collect characters in one pass
-    str1.chars()
-        .filter(|c| c.is_ascii_alphanumeric())
-        .for_each(|c| vec1.push(c.to_ascii_lowercase()));
-    str2.chars()
-        .filter(|c| c.is_ascii_alphanumeric())
-        .for_each(|c| vec2.push(c.to_ascii_lowercase()));
+    // Filter and collect bytes in one pass
+    vec1.extend(
+        str1.bytes()
+            .filter(|&b| b.is_ascii_alphanumeric())
+            .map(|b| b.to_ascii_lowercase()),
+    );
+
+    vec2.extend(
+        str2.bytes()
+            .filter(|&b| b.is_ascii_alphanumeric())
+            .map(|b| b.to_ascii_lowercase()),
+    );
 
     // Calculate wagner fischer directly on character vectors
     let dist = wagner_fischer_2row(&vec1, &vec2) as f64;
@@ -70,7 +75,7 @@ fn token_sort_ratio(str1: &str, str2: &str) -> f64 {
 /// # Returns
 /// The minimum number of single-character edits needed to transform one string into another
 #[inline(always)]
-fn wagner_fischer_2row(s1: &[char], s2: &[char]) -> usize {
+fn wagner_fischer_2row(s1: &[u8], s2: &[u8]) -> usize {
     // Ensure s1 is the shorter sequence for optimization
     let (s1, s2) = if s1.len() < s2.len() {
         (s1, s2)
