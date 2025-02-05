@@ -3159,7 +3159,6 @@ The meaning of Siberia is "sleeping land."
 Ancient Romans at one time used human urine as an ingredient in their toothpaste
 Billie Jean by Michael Jackson was the first video to air on MTV by a black artist
 Eyebrow hair lasts between 3-5 months before it sheds
-An elephant cannot jump
 Scientists say that babies that are breastfed are more likely to be slimmer as adults than those that are not breastfed
 The reason why the Mexican sombrero hat is so wide is to provide shade for the entire body
 Amazingly, goalies in the National Hockey League played without masks until the year 1959
@@ -3843,7 +3842,6 @@ The loss of eyelashes is referred to as madarosis
 Approximately 75% of human poop is made of water
 The popular chocolate bar "Three Musketeers" got its name because when it was first introduced in 1932 there were three individual bars. The flavours were strawberry, chocolate, and vanilla
 Every photograph of the first American atomic bomb detonation was taken by Harold Edgerton
-Heinz Catsup leaving the bottle travels at 25 miles per year
 In 1864, A Quebec farmer found a frog inside a hailstone
 Actor Sylvester Stallone once had a job as a lion cage cleaner
 The first time there was an instance where they had a separate toilet for women and men was in 1739 at a ball in Paris
@@ -4264,7 +4262,6 @@ Mario, of Super Mario Bros. fame, appeared in the 1981 arcade game, Donkey Kong.
 Women are 37% more likely to go to a psychiatrist than men are.
 Diet Coke was only invented in 1982.
 There are more than 1,700 references to gems and precious stones in the King James translation of the Bible.
-American car horns beep in the tone of F.
 Turning a clock's hands counterclockwise while setting it is not necessarily harmful. It is only damaging when the timepiece contains a chiming mechanism.
 There are twice as many kangaroos in Australia as there are people. The kangaroo population is estimated at about 40 million.
 Police dogs are trained to react to commands in a foreign language; commonly German but more recently Hungarian.
@@ -4377,7 +4374,6 @@ There are more chickens than people in the world (at least before that chicken-f
 All 50 states are listed across the top of the Lincoln Memorial on the back of the $5 bill.
 The slogan on New Hampshire license plates is "Live Free or Die." These license plates are manufactured by prisoners in the state prison in Concord.
 Hydrogen gas is the least dense substance in the world, at 0.08988g/cc. Hydrogen solid is the most dense substance in the world, at 70.6g/cc.
-The longest place name still in use is: Taumatawhakatangihangaoauauotam-eteaturipukakapikimaungahoronukupokai-whenu a kitanatahu – a New Zealand hill.
 Only 1 in 2,000,000,000 will live to be 116 or older.
 When you tie a noose, the rope is wrapped twelve times around because it's the same length as a persons head.
 The sentence, "The quick brown fox jumps over the lazy dog," uses every letter in the alphabet.
@@ -4456,7 +4452,6 @@ Golf courses cover 4% of North America.
 The average person will accidentally eat just under a pound of insects every year.
 Until 1994, world maps and globes sold in Albania only had Albania on them.
 The value of Pi will be officially "rounded down" to 3.14 from 3.14159265359 on December 31, 1999.
-The Great Wall of China is the only man-made structure visible from space.
 A piece of paper can be folded no more then 9 times.
 The amount of computer Memory required to run WordPerfect for Win95 is 8 times the amount needed aboard the space shuttle.
 The average North American will eat 35,000 cookies during their life span.
@@ -4595,7 +4590,6 @@ Bullet proof vests, fire escapes, windshield wipers, and laser printers were all
 Lorne Greene had one of his nipples bitten off by an alligator while he was host of "Lorne Greene's Wild Kingdom."
 Who's that playing the piano on the "Mad About You" theme? Paul Reiser himself.
 Over 1000 birds a year die from smashing into windows!
-Recycling one glass jar, saves enough energy to watch T.V for 3 hours!
 Q is the only letter in the alphabet that does not appear in the name of any of the United States!
 166,875,000,000 pieces of mail are delivered each year in the US
 Daffy Duck's middle name is "Dumas"
@@ -5117,7 +5111,6 @@ In a survey of 200000 ostriches over 80 years, not one tried to bury its head in
 Andorra, a tiny country between France & Spain, has the longest average lifespan: 83.49 years.
 In America you will see an average of 500 advertisements a day.
 John Lennon's first girlfriend was named Thelma Pickles.
-You can lead a cow upstairs but not downstairs.
 "Duff" is the decaying organic matter found on a forest floor.
 The US has more personal computers than the next 7 countries combined.
 Kuwait is about 60% male (highest in the world). Latvia is about 54% female (highest in the world).
@@ -5471,7 +5464,6 @@ Ketchup Used to Be Considered a Medicine
 Polar Bears Don't Have White Skin or Fur
 Sudan Has Almost Twice as Many Pyramids as Egypt
 Barbie and Ken Have Full Names
-About 1 Out of Every 2,000 Babies Is Born With a Tooth
 T-Mobile Owns the Color Magenta
 The Only Words That Rhyme With "Purple" Are "Hirple" and "Curple"
 The Vatican's ATMs Are in Latin
@@ -5600,7 +5592,6 @@ Sign language has tongue twisters.
 Penguins fly underwater.
 Minnie the Mouse's first name is not Minnie.
 Rudolph the Reindeer is female.
-A jiffy is a proper unit of time.
 April 11, 1954, was recorded as the most boring day in the world.
 Tiramisu translates to 'take me to heaven' in Italian.
 Buttermilk does not contain any butter.
@@ -6200,7 +6191,7 @@ The man who designed the Pringles can, Fred Bauer, is buried in one-or at least 
 There's a world record for the holder of the most world records: Ashrita Furman, who's set more than 600 records and currently holds more than 200. His records have ranged from fastest mile on a pogo stick, longest time to hula hoop underwater and greatest distance traveled on a bicycle balancing a milk bottle on the head.
 The sun makes up more than 99% of the mass in our solar system.
 Lined up, all of the planets in the solar system could fit between the Earth and the moon.
-The Great Wall of China is not actually visible from space.
+The Great Wall of China is not actually visible from space with the naked eye.
 One million Earths could fit inside the sun.
 It rains diamonds on both Jupiter and Saturn. On these planets, lightning turns methane in the atmosphere into carbon, which hardens into bits of graphite and diamond as it falls to the ground.
 Outer space is completely silent.
@@ -6346,7 +6337,6 @@ A rainbow can be seen only in the morning or late afternoon. It can occur only w
 Lightning strikes the Earth 100 times every second.
 La Paz, Bolivia has an average annual temperature below 50 degrees Fahrenheit. However, it has never recorded a zero-degree temperature. Same for Stanley, the Falkland Islands, and Punta Arenas, Chile.
 There are over 87,000 Americans on waiting lists for organ transplants.
-Catsup leaves the bottle at a rate of 25 miles per year.
 Toxic house plants poison more children than household chemicals do.
 You are more likely to be infected by flesh-eating bacteria than you are to be struck by lightning.
 It is physically impossible for you to lick your elbow.
@@ -6367,7 +6357,6 @@ A kiss stimulates 29 muscles and chemicals that cause relaxation. Women seem to 
 Every time you lick a stamp, you're consuming 1/10 of a calorie.
 Our eyes are always the same size from birth, but our nose and ears never stop growing.
 The average person falls asleep in seven minutes.
-Almost everyone who reads this will try to lick their elbow.
 According to Chinese acupuncture, there is a point on the head that you can press to control your appetite. It is located in the hollow just in front of the flap of the ear.
 In a recent survey, Americans revealed that banana was their favorite smell.
 When opossums are "playing 'possum," they are not playing. They actually pass out from sheer terror.
@@ -7338,7 +7327,6 @@ There's an ant species unique to New York City.
 The Eiffel Tower was originally intended for Barcelona.
 There's only one Shell garage actually shaped like a Shell.
 The shortest commercial flight in the world is in Scotland.
-Dolphins have names for one another.
 The blob of toothpaste on a toothbrush has a name - a nurdle.
 One part of Istanbul is in Europe and the other is in Asia.
 There are more than 1,000 types of bananas growing in the world.
