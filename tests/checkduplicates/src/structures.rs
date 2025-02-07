@@ -3,7 +3,7 @@ use std::{fmt, sync::Arc};
 /// Type used for when a fact match is found
 pub type DuplicateFactMatch = (Fact, Fact, f64);
 /// Wagner-Fishcer similarity threshold
-pub const SIMILARITY_THRESHOLD: f64 = 82.5;
+pub const SIMILARITY_THRESHOLD: f64 = 82.3;
 
 /// The classification of a Fact, safe or unsafe
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
