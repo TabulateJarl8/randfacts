@@ -30,9 +30,6 @@ packages = [{ include = 'randfacts' }]
 [tool.poetry.scripts]
 randfacts = 'randfacts.randfacts:_cli_entrypoint'
 
-[tool.pytest.ini_options]
-asyncio_default_fixture_loop_scope = "function"
-
 [tool.pyright]
 reportUnusedCallResult = false
 

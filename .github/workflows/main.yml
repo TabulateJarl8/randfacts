@@ -36,7 +36,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.local
-          key: poetry-1.1.12-0
+          key: poetry-${{ matrix.python-version }}
 
       # Install Poetry. You could do this manually, or there are several actions that do this.
       # `snok/install-poetry` seems to be minimal yet complete, and really just calls out to
@@ -61,7 +61,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: .venv
-          key: pydeps-${{ hashFiles('**/poetry.lock') }}
+          key: pydeps-${{ matrix.python-version }}-${{ hashFiles('**/poetry.lock') }}
 
       # Install dependencies. `--no-root` means "install all dependencies but not the project
       # itself", which is what you want to avoid caching _your_ code. The `if` statement
