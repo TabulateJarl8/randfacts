@@ -8,9 +8,9 @@ from random import choice
 
 dir_path = Path(__file__).resolve().parent
 
-__version__ = ""
-with contextlib.suppress(Exception):
-	__version__: str = importlib.metadata.version("randfacts")
+__version__: str = ""
+with contextlib.suppress(importlib.metadata.PackageNotFoundError):
+	__version__ = importlib.metadata.version("randfacts")
 
 with (dir_path / "safe.txt").open(encoding="utf-8") as f:
 	safe_facts = [fact.rstrip("\r\n ") for fact in f if fact.rstrip("\r\n ")]
