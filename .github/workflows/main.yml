@@ -10,16 +10,33 @@ on:
   workflow_dispatch:
 
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          # latest version of python 3
+          python-version: "3.x"
+
+      - name: Install Ruff
+        run: pip3 install ruff
+
+      - name: Linting and formatting
+        run: |
+          ruff check .
+          ruff format --check .
+
   modern:
+    needs: lint
     uses: ./.github/workflows/python-test.yml
     with:
-      runner: ubuntu-latest
       python-versions: '["3.8", "3.9", "3.10", "3.11", "3.12", "3.13", "3.14"]'
     secrets: inherit
 
   legacy:
+    needs: lint
     uses: ./.github/workflows/python-test.yml
     with:
-      runner: ubuntu-20.04
       python-versions: '["3.6", "3.7"]'
     secrets: inherit

@@ -1,9 +1,6 @@
 on:
   workflow_call:
     inputs:
-      runner:
-        required: true
-        type: string
       python-versions:
         required: true
         type: string
@@ -91,19 +88,12 @@ jobs:
       # they'll be installed and working.
       - run: poetry install --no-interaction
 
+      - name: Static type checking
+        run: poetry run mypy .
+
       # run the tests and check for 100% coverage
       - name: Run unit tests
         run: poetry run pytest . --cov=randfacts --cov-report=term-missing --cov-report=xml
-
-      # check for code style errors
-      - name: Linting and formatting
-        if: matrix.python-version != '3.6'
-        run: |
-          poetry run ruff check
-          poetry run ruff format --check
-
-      - name: Static type checking
-        run: poetry run mypy .
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v5.5.2
