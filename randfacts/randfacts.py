@@ -1,16 +1,18 @@
 """Contains the core functionality of randfacts."""
 
 import argparse
-import contextlib
-import importlib.metadata
+import sys
 from pathlib import Path
 from random import choice
 
-dir_path = Path(__file__).resolve().parent
+if sys.version_info >= (3, 8):  # noqa: UP036
+	from importlib import metadata
+else:
+	import importlib_metadata as metadata
 
-__version__ = ""
-with contextlib.suppress(Exception):
-	__version__: str = importlib.metadata.version("randfacts")
+__version__: str = metadata.version("randfacts")
+
+dir_path = Path(__file__).resolve().parent
 
 with (dir_path / "safe.txt").open(encoding="utf-8") as f:
 	safe_facts = [fact.rstrip("\r\n ") for fact in f if fact.rstrip("\r\n ")]
@@ -42,7 +44,7 @@ def get_fact(filter_enabled: bool = True, only_unsafe: bool = False) -> str:
 	"""
 	if only_unsafe:
 		return choice(unsafe_facts)
-	if filter_enabled is False:
+	if not filter_enabled:
 		return choice(all_facts)
 	return choice(safe_facts)
 

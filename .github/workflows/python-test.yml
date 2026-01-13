@@ -1,0 +1,96 @@
+on:
+  workflow_call:
+    inputs:
+      python-versions:
+        required: true
+        type: string
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ${{ fromJson(inputs.python-versions) }}
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install Runner Python ${{ matrix.python-version }}
+        uses: mamba-org/setup-micromamba@v2
+        with:
+          create-args: python=${{ matrix.python-version }}
+          environment-name: legacy-env
+          cache-environment: true
+
+      - name: Set up host Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: 3.14
+
+      # Install Poetry. You could do this manually, or there are several actions that do this.
+      # `snok/install-poetry` seems to be minimal yet complete, and really just calls out to
+      # Poetry's default install script, which feels correct. I pin the Poetry version here
+      # because Poetry does occasionally change APIs between versions and I don't want my
+      # actions to break if it does.
+      #
+      # The key configuration value here is `virtualenvs-in-project: true`: this creates the
+      # venv as a `.venv` in your testing directory, which allows the next step to easily
+      # cache it.
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+        with:
+          version: 2.2.1
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+
+      - name: Use Runner Python Environment
+        run: |
+          TARGET_PY=$HOME/micromamba/envs/legacy-env/bin/python
+
+          if [ "${{ matrix.python-version }}" = "3.6" ]; then
+            # poetry has trouble creating the venv since 3.6 is before __future__ annotations was introduced
+            $TARGET_PY -m venv .venv
+            poetry env use .venv/bin/python
+          else
+            poetry env use "$TARGET_PY"
+          fi
+
+      # Cache your dependencies (i.e. all the stuff in your `pyproject.toml`). Note the cache
+      # key: if you're using multiple Python versions, or multiple OSes, you need to include
+      # them in the cache key.
+      - name: cache deps
+        id: cache-deps
+        uses: actions/cache@v5
+        with:
+          path: .venv
+          key: pydeps-${{ runner.os }}-${{ matrix.python-version }}-${{ hashFiles('**/pyproject.toml', '**/poetry.lock') }}
+
+      # Install dependencies. `--no-root` means "install all dependencies but not the project
+      # itself", which is what you want to avoid caching _your_ code. The `if` statement
+      # ensures this only runs on a cache miss.
+      - name: Install dependencies
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+        run: poetry install --no-interaction --no-root
+
+      # Now install _your_ project. This isn't necessary for many types of projects -- particularly
+      # things like Django apps don't need this. But it's a good idea since it fully-exercises the
+      # pyproject.toml and makes that if you add things like console-scripts at some point that
+      # they'll be installed and working.
+      - run: poetry install --no-interaction
+
+      - name: Static type checking
+        # do NOT try running mypy on 3.6
+        if: matrix.python-version != '3.6'
+        run: poetry run mypy .
+
+      # run the tests and check for 100% coverage
+      - name: Run unit tests
+        run: poetry run pytest . --cov=randfacts --cov-report=term-missing --cov-report=xml
+
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5.5.2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          flags: python-${{ matrix.python-version }}

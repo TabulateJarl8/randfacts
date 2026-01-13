@@ -8,7 +8,6 @@ import pytest
 
 sys.path.insert(1, str(pathlib.Path(__file__).parents[1]))
 from randfacts import (
-	getFact,
 	randfacts,  # local randfacts instead of installed version
 )
 
@@ -18,10 +17,18 @@ def test_get_fact() -> None:
 	assert isinstance(randfacts.get_fact(), str), "get_fact() must return a string"
 
 
-def test_getFact_deprecated() -> None:  # noqa: N802
-	"""Make sure getFact throws a deprecation warning."""
-	with pytest.deprecated_call():
-		_ = getFact()
+def test_get_fact_filter_off() -> None:
+	"""Make sure get_fact works with filter off."""
+	assert isinstance(randfacts.get_fact(filter_enabled=False), str), (
+		"get_fact() must return a string"
+	)
+
+
+def test_get_fact_only_unsafe() -> None:
+	"""Make sure get_fact works with only unsafe."""
+	assert isinstance(randfacts.get_fact(only_unsafe=True), str), (
+		"get_fact() must return a string"
+	)
 
 
 def test_all_facts_list() -> None:
@@ -60,9 +67,9 @@ def test_cli_unsafe_args() -> None:
 		stdout=subprocess.DEVNULL,
 	)
 	child.communicate()
-	assert (
-		child.returncode == 0
-	), "`python3 -m randfacts --unsafe` must return with exit code 0"
+	assert child.returncode == 0, (
+		"`python3 -m randfacts --unsafe` must return with exit code 0"
+	)
 
 
 def test_cli_mixed_args() -> None:
@@ -72,22 +79,23 @@ def test_cli_mixed_args() -> None:
 		stdout=subprocess.DEVNULL,
 	)
 	child.communicate()
-	assert (
-		child.returncode == 0
-	), "`python3 -m randfacts --mixed` must return with exit code 0"
+	assert child.returncode == 0, (
+		"`python3 -m randfacts --mixed` must return with exit code 0"
+	)
 
 
 def test_cli_version() -> None:
 	"""Test that CLI with --version returns the correct version."""
-	child = subprocess.Popen(
+	child = subprocess.run(
 		["python3", "-m", "randfacts", "--version"],
 		stdout=subprocess.PIPE,
-		text=True,
+		universal_newlines=True,  # noqa: UP021 for python 3.6 support
+		check=True,
 	)
-	output, _ = child.communicate()
-	assert (
-		output.strip() == randfacts.__version__
-	), f"`python3 -m randfacts --version` must return {randfacts.__version__}"
+
+	assert child.stdout.strip() == randfacts.__version__, (
+		f"`python3 -m randfacts --version` must return {randfacts.__version__}"
+	)
 
 
 def test_main_entrypoint() -> None:
@@ -98,10 +106,11 @@ def test_main_entrypoint() -> None:
 	)
 
 	# Run the script as a subprocess
-	result = subprocess.run(
+	result = subprocess.run(  # noqa: UP022 for python 3.6
 		["python", str(script_path)],
-		capture_output=True,
-		text=True,
+		stdout=subprocess.PIPE,
+		stderr=subprocess.PIPE,
+		universal_newlines=True,  # noqa: UP021 for python 3.6 support
 		check=False,
 	)
 
@@ -116,6 +125,6 @@ def test_invalid_characters(bad_char: str) -> None:
 	If this test fails, try running `fix_encoding.py`
 	"""
 	for index, fact in enumerate(randfacts.all_facts):
-		assert (
-			bad_char not in fact
-		), f"Bad character '{bad_char}' found in fact at index {index}"
+		assert bad_char not in fact, (
+			f"Bad character '{bad_char}' found in fact at index {index}"
+		)

@@ -1,3 +1,5 @@
+name: Test code and coverage
+
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
@@ -7,79 +9,34 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  test:
-    name: Test code and coverage
+  lint:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12", "3.13"]
     steps:
-      - uses: actions/checkout@v4
-
-      # If you wanted to use multiple Python versions, you'd have specify a matrix in the job and
-      # reference the matrixe python version here.
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
         with:
-          python-version: ${{ matrix.python-version }}
-          allow-prereleases: true
+          # latest version of python 3
+          python-version: "3.x"
 
-      # Cache the installation of Poetry itself, e.g. the next step. This prevents the workflow
-      # from installing Poetry every time, which can be slow. Note the use of the Python version
-      # number in the cache key
-      - name: cache poetry install
-        uses: actions/cache@v4
-        with:
-          path: ~/.local
-          key: poetry-${{ matrix.python-version }}
+      - name: Install Ruff
+        run: pip3 install ruff
 
-      # Install Poetry. You could do this manually, or there are several actions that do this.
-      # `snok/install-poetry` seems to be minimal yet complete, and really just calls out to
-      # Poetry's default install script, which feels correct. I pin the Poetry version here
-      # because Poetry does occasionally change APIs between versions and I don't want my
-      # actions to break if it does.
-      #
-      # The key configuration value here is `virtualenvs-in-project: true`: this creates the
-      # venv as a `.venv` in your testing directory, which allows the next step to easily
-      # cache it.
-      - uses: snok/install-poetry@v1
-        with:
-          version: 1.8.5
-          virtualenvs-create: true
-          virtualenvs-in-project: true
+      - name: Linting and formatting
+        run: |
+          ruff check .
+          ruff format --check .
 
-      # Cache your dependencies (i.e. all the stuff in your `pyproject.toml`). Note the cache
-      # key: if you're using multiple Python versions, or multiple OSes, you need to include
-      # them in the cache key.
-      - name: cache deps
-        id: cache-deps
-        uses: actions/cache@v4
-        with:
-          path: .venv
-          key: pydeps-${{ matrix.python-version }}-${{ hashFiles('**/poetry.lock') }}
+  modern:
+    needs: lint
+    uses: ./.github/workflows/python-test.yml
+    with:
+      python-versions: '["3.8", "3.9", "3.10", "3.11", "3.12", "3.13", "3.14"]'
+    secrets: inherit
 
-      # Install dependencies. `--no-root` means "install all dependencies but not the project
-      # itself", which is what you want to avoid caching _your_ code. The `if` statement
-      # ensures this only runs on a cache miss.
-      - run: poetry install --no-interaction --no-root
-        if: steps.cache-deps.outputs.cache-hit != 'true'
-
-      # Now install _your_ project. This isn't necessary for many types of projects -- particularly
-      # things like Django apps don't need this. But it's a good idea since it fully-exercises the
-      # pyproject.toml and makes that if you add things like console-scripts at some point that
-      # they'll be installed and working.
-      - run: poetry install --no-interaction
-
-      # run the tests and check for 100% coverage
-      - run: poetry run pytest . --cov=randfacts --cov-report=term-missing --cov-report=xml
-
-      # check for code style errors
-      - run: poetry run ruff check
-      - run: poetry run ruff format --check
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v5.0.2
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+  legacy:
+    needs: lint
+    uses: ./.github/workflows/python-test.yml
+    with:
+      python-versions: '["3.6", "3.7"]'
+    secrets: inherit
