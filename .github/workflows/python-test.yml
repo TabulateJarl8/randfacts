@@ -48,7 +48,14 @@ jobs:
       - name: Use Runner Python Environment
         run: |
           TARGET_PY=$HOME/micromamba/envs/legacy-env/bin/python
-          poetry env use "$TARGET_PY"
+
+          if [ "${{ matrix.python-version }}" = "3.6" ]; then
+            # poetry has trouble creating the venv since 3.6 is before __future__ annotations was introduced
+            $TARGET_PY -m venv .venv
+            poetry env use .venv/bin/python
+          else
+            poetry env use "$TARGET_PY"
+          fi
 
       # Cache your dependencies (i.e. all the stuff in your `pyproject.toml`). Note the cache
       # key: if you're using multiple Python versions, or multiple OSes, you need to include
