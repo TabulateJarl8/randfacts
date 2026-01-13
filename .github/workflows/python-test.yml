@@ -14,37 +14,15 @@ jobs:
       matrix:
         python-version: ${{ fromJson(inputs.python-versions) }}
 
-    container: ${{
-      (contains(matrix.python-version, '3.6') || contains(matrix.python-version, '3.7'))
-      && format('python:{0}-slim', matrix.python-version)
-      || null
-      }}
-
     steps:
       - uses: actions/checkout@v6
 
-      - name: Install System Dependencies (Legacy Only)
-        if: ${{ matrix.python-version == '3.6' || matrix.python-version == '3.7' }}
-        run: |
-          apt-get update
-          apt-get install -y --no-install-recommends git curl gnupg2
-
-      - name: Determine Poetry Version
-        id: poetry
-        run: |
-          case "${{ matrix.python-version }}" in
-            "3.6") echo "poetry_version=1.2.0a2" >> $GITHUB_OUTPUT ;;
-            "3.7") echo "poetry_version=1.5.0" >> $GITHUB_OUTPUT ;;
-            "3.8") echo "poetry_version=1.8.5" >> $GITHUB_OUTPUT ;;
-            *) echo "poetry_version=2.2.1" >> $GITHUB_OUTPUT ;;
-          esac
-
-      # we should only setup-python if not in a container
       - name: Set up Python ${{ matrix.python-version }}
-        if: ${{ !(matrix.python-version == '3.6' || matrix.python-version == '3.7') }}
         uses: actions/setup-python@v6
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: |
+            ${{ matrix.python-version }}
+            3.14
           allow-prereleases: true
 
       # Cache the installation of Poetry itself, e.g. the next step. This prevents the workflow
@@ -68,9 +46,14 @@ jobs:
       - name: Install Poetry
         uses: snok/install-poetry@v1
         with:
-          version: ${{ steps.poetry.outputs.poetry_version }}
+          version: 2.2.1
           virtualenvs-create: true
           virtualenvs-in-project: true
+
+      - name: Use Correct Python Environment
+        run: |
+          TARGET_PY=$(which python${{ matrix.python-version }})
+          poetry env use "$TARGET_PY"
 
       # Cache your dependencies (i.e. all the stuff in your `pyproject.toml`). Note the cache
       # key: if you're using multiple Python versions, or multiple OSes, you need to include
@@ -87,14 +70,7 @@ jobs:
       # ensures this only runs on a cache miss.
       - name: Install dependencies
         if: steps.cache-deps.outputs.cache-hit != 'true'
-        run: |
-          if [ "${{ matrix.python-version }}" = "3.6" ]; then
-            # 3.6 is incompatible with modern lockfiles
-            rm -f poetry.lock
-            poetry install --no-interaction --no-root
-          else
-            poetry install --no-interaction --no-root
-          fi
+        run: poetry install --no-interaction --no-root
 
       # Now install _your_ project. This isn't necessary for many types of projects -- particularly
       # things like Django apps don't need this. But it's a good idea since it fully-exercises the

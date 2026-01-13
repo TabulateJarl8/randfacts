@@ -120,6 +120,7 @@ mypy = [
   { version = "~0.971", python = ">=3.6,<3.7" },
 ]
 
+# legacy import: ingore types
 [tool.mypy]
 [[tool.mypy.overrides]]
 module = "importlib_metadata.*"
