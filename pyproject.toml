@@ -100,7 +100,7 @@ python = "^3.6"
 [tool.poetry.group.dev.dependencies]
 ruff = [
   { version = "^0.14.11", python = "^3.9" },
-  { version = "^0.7.4", python = ">=3.7,<=3.8" },
+  { version = "^0.7.4", python = ">=3.7,<3.9" },
 ]
 pytest = [
   { version = "^9.0.2", python = "^3.10" },
