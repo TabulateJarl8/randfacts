@@ -23,6 +23,12 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
+      - name: Install System Dependencies (Legacy Only)
+        if: ${{ matrix.python-version == '3.6' || matrix.python-version == '3.7' }}
+        run: |
+          apt-get update
+          apt-get install -y --no-install-recommends git curl gnupg2
+
       - name: Determine Poetry Version
         id: poetry
         run: |
@@ -99,3 +105,4 @@ jobs:
         uses: codecov/codecov-action@v5.5.2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+          flags: python-${{ matrix.python-version }}
