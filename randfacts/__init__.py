@@ -40,8 +40,6 @@ CLI Examples:
 
 """
 
-import warnings as _warnings
-
 from randfacts.randfacts import (
 	__version__,
 	all_facts,
@@ -57,14 +55,3 @@ __all__ = [
 	"safe_facts",
 	"unsafe_facts",
 ]
-
-
-# Deprecated methods
-def getFact(filter_enabled: bool = True, only_unsafe: bool = False) -> str:  # noqa: N802
-	"""This method is deprecated. Please use get_fact."""
-	_warnings.warn(
-		"getFact is deprecated. Please use get_fact",
-		DeprecationWarning,
-		stacklevel=2,
-	)
-	return get_fact(filter_enabled, only_unsafe)  # noqa: DOC201

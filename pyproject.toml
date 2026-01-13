@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "randfacts"
-version = "0.22.2"
+version = "0.23.0"
 description = "Package to generate random facts"
 authors = ["TabulateJarl8 <tabulatejarl8@gmail.com>"]
 license = "MIT"

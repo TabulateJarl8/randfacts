@@ -8,7 +8,6 @@ import pytest
 
 sys.path.insert(1, str(pathlib.Path(__file__).parents[1]))
 from randfacts import (
-	getFact,
 	randfacts,  # local randfacts instead of installed version
 )
 
@@ -16,12 +15,6 @@ from randfacts import (
 def test_get_fact() -> None:
 	"""Make sure get_fact works without extra arguments."""
 	assert isinstance(randfacts.get_fact(), str), "get_fact() must return a string"
-
-
-def test_getFact_deprecated() -> None:  # noqa: N802
-	"""Make sure getFact throws a deprecation warning."""
-	with pytest.deprecated_call():
-		_ = getFact()
 
 
 def test_all_facts_list() -> None:
@@ -60,9 +53,9 @@ def test_cli_unsafe_args() -> None:
 		stdout=subprocess.DEVNULL,
 	)
 	child.communicate()
-	assert (
-		child.returncode == 0
-	), "`python3 -m randfacts --unsafe` must return with exit code 0"
+	assert child.returncode == 0, (
+		"`python3 -m randfacts --unsafe` must return with exit code 0"
+	)
 
 
 def test_cli_mixed_args() -> None:
@@ -72,9 +65,9 @@ def test_cli_mixed_args() -> None:
 		stdout=subprocess.DEVNULL,
 	)
 	child.communicate()
-	assert (
-		child.returncode == 0
-	), "`python3 -m randfacts --mixed` must return with exit code 0"
+	assert child.returncode == 0, (
+		"`python3 -m randfacts --mixed` must return with exit code 0"
+	)
 
 
 def test_cli_version() -> None:
@@ -85,9 +78,9 @@ def test_cli_version() -> None:
 		text=True,
 	)
 	output, _ = child.communicate()
-	assert (
-		output.strip() == randfacts.__version__
-	), f"`python3 -m randfacts --version` must return {randfacts.__version__}"
+	assert output.strip() == randfacts.__version__, (
+		f"`python3 -m randfacts --version` must return {randfacts.__version__}"
+	)
 
 
 def test_main_entrypoint() -> None:
@@ -116,6 +109,6 @@ def test_invalid_characters(bad_char: str) -> None:
 	If this test fails, try running `fix_encoding.py`
 	"""
 	for index, fact in enumerate(randfacts.all_facts):
-		assert (
-			bad_char not in fact
-		), f"Bad character '{bad_char}' found in fact at index {index}"
+		assert bad_char not in fact, (
+			f"Bad character '{bad_char}' found in fact at index {index}"
+		)
