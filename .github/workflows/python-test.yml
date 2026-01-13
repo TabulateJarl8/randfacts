@@ -80,7 +80,7 @@ jobs:
         uses: actions/cache@v5
         with:
           path: .venv
-          key: pydeps-${{ runner.os }}-${{ matrix.python-version }}-${{ hashFiles('**/poetry.lock') }}
+          key: pydeps-${{ runner.os }}-${{ matrix.python-version }}-${{ hashFiles('**/pyproject.toml', '**/poetry.lock') }}
 
       # Install dependencies. `--no-root` means "install all dependencies but not the project
       # itself", which is what you want to avoid caching _your_ code. The `if` statement
@@ -88,9 +88,10 @@ jobs:
       - name: Install dependencies
         if: steps.cache-deps.outputs.cache-hit != 'true'
         run: |
-          if [ "${{ matrix.python-version }}" == "3.6" ]; then
+          if [ "${{ matrix.python-version }}" = "3.6" ]; then
             # 3.6 is incompatible with modern lockfiles
-            poetry install --no-interaction --no-root --no-lock
+            rm -f poetry.lock
+            poetry install --no-interaction --no-root
           else
             poetry install --no-interaction --no-root
           fi
