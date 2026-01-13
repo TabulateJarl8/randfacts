@@ -33,7 +33,7 @@ jobs:
         id: poetry
         run: |
           case "${{ matrix.python-version }}" in
-            "3.6") echo "poetry_version=1.2.0" >> $GITHUB_OUTPUT ;;
+            "3.6") echo "poetry_version=1.2.0a2" >> $GITHUB_OUTPUT ;;
             "3.7") echo "poetry_version=1.5.0" >> $GITHUB_OUTPUT ;;
             "3.8") echo "poetry_version=1.8.5" >> $GITHUB_OUTPUT ;;
             *) echo "poetry_version=2.2.1" >> $GITHUB_OUTPUT ;;
