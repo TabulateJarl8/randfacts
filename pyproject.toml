@@ -96,6 +96,7 @@ order-by-type = true
 
 [tool.poetry.dependencies]
 python = "^3.6"
+importlib-metadata = { version = "^1.4", python = "<3.8" }
 
 [tool.poetry.group.dev.dependencies]
 ruff = [
