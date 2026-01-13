@@ -72,13 +72,14 @@ def test_cli_mixed_args() -> None:
 
 def test_cli_version() -> None:
 	"""Test that CLI with --version returns the correct version."""
-	child = subprocess.Popen(
+	child = subprocess.run(
 		["python3", "-m", "randfacts", "--version"],
 		stdout=subprocess.PIPE,
-		text=True,
+		universal_newlines=True,  # noqa: UP021 for python 3.6 support
+		check=True,
 	)
-	output, _ = child.communicate()
-	assert output.strip() == randfacts.__version__, (
+
+	assert child.stdout.strip() == randfacts.__version__, (
 		f"`python3 -m randfacts --version` must return {randfacts.__version__}"
 	)
 
@@ -91,10 +92,11 @@ def test_main_entrypoint() -> None:
 	)
 
 	# Run the script as a subprocess
-	result = subprocess.run(
+	result = subprocess.run(  # noqa: UP022 for python 3.6
 		["python", str(script_path)],
-		capture_output=True,
-		text=True,
+		stdout=subprocess.PIPE,
+		stderr=subprocess.PIPE,
+		universal_newlines=True,  # noqa: UP021 for python 3.6 support
 		check=False,
 	)
 
