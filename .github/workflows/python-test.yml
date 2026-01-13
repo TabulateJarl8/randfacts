@@ -17,13 +17,12 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - name: Install uv for Python binary management
-        uses: astral-sh/setup-uv@v7
-        with:
-          enable-cache: true
-
       - name: Install Runner Python ${{ matrix.python-version }}
-        run: uv python install ${{ matrix.python-version }}
+        uses: mamba-org/setup-micromamba@v2
+        with:
+          create-args: python=${{ matrix.python-version }}
+          environment-name: legacy-env
+          cache-environment: true
 
       - name: Set up host Python
         uses: actions/setup-python@v6
@@ -48,7 +47,7 @@ jobs:
 
       - name: Use Runner Python Environment
         run: |
-          TARGET_PY=$(uv python find ${{ matrix.python-version }})
+          TARGET_PY=$HOME/micromamba/envs/legacy-env/bin/python
           poetry env use "$TARGET_PY"
 
       # Cache your dependencies (i.e. all the stuff in your `pyproject.toml`). Note the cache
