@@ -81,6 +81,8 @@ jobs:
       - run: poetry install --no-interaction
 
       - name: Static type checking
+        # do NOT try running mypy on 3.6
+        if: matrix.python-version != '3.6'
         run: poetry run mypy .
 
       # run the tests and check for 100% coverage
