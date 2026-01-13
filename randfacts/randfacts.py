@@ -44,7 +44,7 @@ def get_fact(filter_enabled: bool = True, only_unsafe: bool = False) -> str:
 	"""
 	if only_unsafe:
 		return choice(unsafe_facts)
-	if filter_enabled is False:
+	if not filter_enabled:
 		return choice(all_facts)
 	return choice(safe_facts)
 

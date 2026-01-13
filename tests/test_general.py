@@ -17,6 +17,20 @@ def test_get_fact() -> None:
 	assert isinstance(randfacts.get_fact(), str), "get_fact() must return a string"
 
 
+def test_get_fact_filter_off() -> None:
+	"""Make sure get_fact works with filter off."""
+	assert isinstance(randfacts.get_fact(filter_enabled=False), str), (
+		"get_fact() must return a string"
+	)
+
+
+def test_get_fact_only_unsafe() -> None:
+	"""Make sure get_fact works with only unsafe."""
+	assert isinstance(randfacts.get_fact(only_unsafe=True), str), (
+		"get_fact() must return a string"
+	)
+
+
 def test_all_facts_list() -> None:
 	"""Test that all_facts list is present in the module."""
 	assert isinstance(randfacts.all_facts, list), "all_facts must be a list"
