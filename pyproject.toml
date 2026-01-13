@@ -120,6 +120,11 @@ mypy = [
   { version = "~0.971", python = ">=3.6,<3.7" },
 ]
 
+[tool.mypy]
+[[tool.mypy.overrides]]
+module = "importlib_metadata.*"
+ignore_missing_imports = true
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
