@@ -85,8 +85,15 @@ jobs:
       # Install dependencies. `--no-root` means "install all dependencies but not the project
       # itself", which is what you want to avoid caching _your_ code. The `if` statement
       # ensures this only runs on a cache miss.
-      - run: poetry install --no-interaction --no-root
+      - name: Install dependencies
         if: steps.cache-deps.outputs.cache-hit != 'true'
+        run: |
+          if [ "${{ matrix.python-version }}" == "3.6" ]; then
+            # 3.6 is incompatible with modern lockfiles
+            poetry install --no-interaction --no-root --no-lock
+          else
+            poetry install --no-interaction --no-root
+          fi
 
       # Now install _your_ project. This isn't necessary for many types of projects -- particularly
       # things like Django apps don't need this. But it's a good idea since it fully-exercises the
