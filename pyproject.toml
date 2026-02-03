@@ -32,7 +32,7 @@ homepage = "https://tabulate.tech/software/randfacts/"
 repository = "https://github.com/TabulateJarl8/randfacts"
 
 [project.scripts]
-randfacts = "randfacts.randfacts:_cli_entrypoint"
+randfacts = "randfacts.__main__:cli_entrypoint"
 
 [tool.uv.build-backend]
 source-include = ["src/randfacts/*.txt"]

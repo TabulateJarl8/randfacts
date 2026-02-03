@@ -100,9 +100,11 @@ def test_cli_version() -> None:
 
 def test_main_entrypoint() -> None:
     """Test the main entrypoint in randfacts.py."""
-    # Path to the module or script you want to test
     script_path = (
-        pathlib.Path(__file__).resolve().parents[1] / "randfacts" / "randfacts.py"
+        pathlib.Path(__file__).resolve().parents[1]
+        / "src"
+        / "randfacts"
+        / "__main__.py"
     )
 
     # Run the script as a subprocess

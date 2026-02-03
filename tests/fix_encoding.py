@@ -4,8 +4,8 @@ from pathlib import Path
 
 parent = Path(__file__).resolve().parents[1]
 
-safe_path = parent / "randfacts" / "safe.txt"
-unsafe_path = parent / "randfacts" / "unsafe.txt"
+safe_path = parent / "src" / "randfacts" / "safe.txt"
+unsafe_path = parent / "src" / "randfacts" / "unsafe.txt"
 
 bad_characters = [
     ("‘", "'"),  # noqa: RUF001
