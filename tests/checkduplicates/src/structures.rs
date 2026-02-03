@@ -16,7 +16,7 @@ pub enum FactClass {
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct Fact {
     /// The fact text
-    pub fact: Arc<String>,
+    pub fact: Arc<str>,
     /// The class of the fact (safe or unsafe)
     pub class: FactClass,
     /// The line number of the fact in it's respective file
@@ -26,7 +26,7 @@ pub struct Fact {
 impl Fact {
     pub fn new(fact: String, class: FactClass, line_number: usize) -> Self {
         Self {
-            fact: Arc::new(fact),
+            fact: fact.into(),
             class,
             line_number,
         }
