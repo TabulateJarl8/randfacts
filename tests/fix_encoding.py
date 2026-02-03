@@ -8,28 +8,28 @@ safe_path = parent / "randfacts" / "safe.txt"
 unsafe_path = parent / "randfacts" / "unsafe.txt"
 
 bad_characters = [
-	("‘", "'"),  # noqa: RUF001
-	("’", "'"),  # noqa: RUF001
-	("“", '"'),
-	("”", '"'),
-	("…", "..."),
-	("—", "-"),
+    ("‘", "'"),  # noqa: RUF001
+    ("’", "'"),  # noqa: RUF001
+    ("“", '"'),
+    ("”", '"'),
+    ("…", "..."),
+    ("—", "-"),
 ]
 
 with safe_path.open("r+", encoding="utf-8") as f:
-	safe = f.read()
+    safe = f.read()
 
-	for char in bad_characters:
-		safe = safe.replace(char[0], char[1])
+    for char in bad_characters:
+        safe = safe.replace(char[0], char[1])
 
-	f.seek(0)
-	f.write(safe)
+    _ = f.seek(0)
+    _ = f.write(safe)
 
 with unsafe_path.open("r+", encoding="utf-8") as f:
-	unsafe = f.read()
+    unsafe = f.read()
 
-	for char in bad_characters:
-		unsafe = unsafe.replace(char[0], char[1])
+    for char in bad_characters:
+        unsafe = unsafe.replace(char[0], char[1])
 
-	f.seek(0)
-	f.write(unsafe)
+    _ = f.seek(0)
+    _ = f.write(unsafe)
