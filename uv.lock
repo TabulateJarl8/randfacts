@@ -386,6 +386,15 @@ toml = [
 ]
 
 [[package]]
+name = "dataclasses"
+version = "0.8"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/1f/12/7919c5d8b9c497f9180db15ea8ead6499812ea8264a6ae18766d93c59fe5/dataclasses-0.8.tar.gz", hash = "sha256:8479067f342acf957dc82ec415d355ab5edb7e7646b90dc6e2fd1d96ad084c97", size = 36581, upload-time = "2020-11-13T14:40:30.139Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/fe/ca/75fac5856ab5cfa51bbbcefa250182e50441074fdc3f803f6e76451fab43/dataclasses-0.8-py3-none-any.whl", hash = "sha256:0201d89fa866f68c8ebd9d08ee6ff50c0b255f8ec63a71c16fda7af82bb887bf", size = 19041, upload-time = "2020-11-13T14:40:29.194Z" },
+]
+
+[[package]]
 name = "exceptiongroup"
 version = "1.3.1"
 source = { registry = "https://pypi.org/simple" }
@@ -1009,6 +1018,7 @@ name = "randfacts"
 version = "0.23.0"
 source = { editable = "." }
 dependencies = [
+    { name = "dataclasses", marker = "python_full_version < '3.7'" },
     { name = "importlib-metadata", version = "4.8.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.7'" },
     { name = "importlib-metadata", version = "6.7.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version == '3.7.*'" },
 ]
@@ -1029,7 +1039,10 @@ dev = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "importlib-metadata", marker = "python_full_version < '3.8'" }]
+requires-dist = [
+    { name = "dataclasses", marker = "python_full_version == '3.6.*'", specifier = ">=0.8" },
+    { name = "importlib-metadata", marker = "python_full_version < '3.8'", specifier = ">=4.8.3" },
+]
 
 [package.metadata.requires-dev]
 dev = [

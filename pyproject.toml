@@ -7,7 +7,10 @@ license = "MIT"
 license-files = ["LICENSE"]
 authors = [{ name = "TabulateJarl8", email = "tabulatejarl8@gmail.com" }]
 requires-python = ">=3.6"
-dependencies = ["importlib-metadata ; python_full_version < '3.8'"]
+dependencies = [
+  "dataclasses>=0.8 ; python_full_version == '3.6.*'",
+  "importlib-metadata>=4.8.3 ; python_full_version < '3.8'",
+]
 classifiers = [
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3.6",
