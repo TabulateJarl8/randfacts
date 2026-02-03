@@ -26,13 +26,19 @@ classifiers = [
   "License :: OSI Approved :: MIT License",
   "Operating System :: OS Independent",
   "Development Status :: 5 - Production/Stable",
+  "Environment :: Console",
   "Intended Audience :: Developers",
+  "Intended Audience :: End Users/Desktop",
+  "Topic :: Games/Entertainment",
+  "Topic :: Education",
   "Topic :: Software Development :: Libraries :: Python Modules",
 ]
+keywords = ["facts", "random", "generator", "trivia", "cli", "dataset"]
 
 [project.urls]
 homepage = "https://tabulate.tech/software/randfacts/"
 repository = "https://github.com/TabulateJarl8/randfacts"
+issues = "https://github.com/TabulateJarl8/randfacts/issues"
 
 [project.scripts]
 randfacts = "randfacts.__main__:cli_entrypoint"
