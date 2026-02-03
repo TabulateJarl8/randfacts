@@ -108,3 +108,29 @@ More help.
 ```sh
 $ python3 -m randfacts --help
 ```
+
+# Contributing
+
+Contributions are welcome, this project uses [uv](https://github.com/astral-sh/uv) to manage it's dependencies, so setup is very simple.
+
+## Development Setup
+
+1. Make sure uv is properly installed
+2. Fork and clone the repository with `git clone git@github.com:your-username/randfacts.git`
+3. Install dependencies with `uv sync --dev`
+4. After making changes, ensure the tests pass, and add any unit tests needed to bring code coverage to 100% with the following command:
+
+```sh
+# check everything, if you're just working on one particular issue,
+# see the Makefile for more granular tasks
+make check-all
+```
+
+## Duplicate facts test
+
+I've created a fairly complex duplicate fact detection test in Rust. It will be easier to run on your machine to check/fix any issues, but it also runs in CI if you don't want to set up Rust. It can be run with the following:
+
+```sh
+cd tests/checkduplicates
+cargo run --release
+```
