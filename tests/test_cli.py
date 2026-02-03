@@ -15,7 +15,7 @@ from randfacts.__main__ import cli_entrypoint
 
 MODULE_PATH = "randfacts.__main__"
 
-MockArgvFunction = Callable[[list[str]], ContextManager[object]]
+MockArgvFunction = Callable[[List[str]], ContextManager[object]]
 
 
 @pytest.fixture
