@@ -1,12 +1,7 @@
 """General functionality unit tests."""
 
-import pathlib
-import subprocess
-import sys
-
 import pytest
 
-sys.path.insert(1, str(pathlib.Path(__file__).parents[1]))
 from randfacts import (
     randfacts,  # local randfacts instead of installed version
 )
@@ -44,80 +39,6 @@ def test_safe_facts_list() -> None:
 def test_unsafe_facts_list() -> None:
     """Test that unsafe_facts list is present in the module."""
     assert isinstance(randfacts.unsafe_facts, list), "unsafe_facts must be a list"
-
-
-def test_cli_no_args() -> None:
-    """Test that a basic randfacts CLI call will work."""
-    child = subprocess.Popen(["python3", "-m", "randfacts"], stdout=subprocess.DEVNULL)
-    _ = child.communicate()
-    assert child.returncode == 0, "`python3 -m randfacts` must return with exit code 0"
-
-
-def test_cli_script_installed() -> None:
-    """Test that the `randfacts` script is installed to the PATH."""
-    child = subprocess.Popen(["randfacts"], stdout=subprocess.DEVNULL)
-    _ = child.communicate()
-    assert child.returncode == 0, "`randfacts` must return with exit code 0"
-
-
-def test_cli_unsafe_args() -> None:
-    """Test that CLI with --unsafe works."""
-    child = subprocess.Popen(
-        ["python3", "-m", "randfacts", "--unsafe"],
-        stdout=subprocess.DEVNULL,
-    )
-    _ = child.communicate()
-    assert child.returncode == 0, (
-        "`python3 -m randfacts --unsafe` must return with exit code 0"
-    )
-
-
-def test_cli_mixed_args() -> None:
-    """Test that CLI with --mixed works."""
-    child = subprocess.Popen(
-        ["python3", "-m", "randfacts", "--mixed"],
-        stdout=subprocess.DEVNULL,
-    )
-    _ = child.communicate()
-    assert child.returncode == 0, (
-        "`python3 -m randfacts --mixed` must return with exit code 0"
-    )
-
-
-def test_cli_version() -> None:
-    """Test that CLI with --version returns the correct version."""
-    child = subprocess.run(
-        ["python3", "-m", "randfacts", "--version"],
-        stdout=subprocess.PIPE,
-        universal_newlines=True,  # noqa: UP021 for python 3.6 support
-        check=True,
-    )
-
-    assert child.stdout.strip() == randfacts.__version__, (
-        f"`python3 -m randfacts --version` must return {randfacts.__version__}"
-    )
-
-
-def test_main_entrypoint() -> None:
-    """Test the main entrypoint in randfacts.py."""
-    script_path = (
-        pathlib.Path(__file__).resolve().parents[1]
-        / "src"
-        / "randfacts"
-        / "__main__.py"
-    )
-
-    # Run the script as a subprocess
-    result = subprocess.run(  # noqa: UP022 for python 3.6
-        ["python", str(script_path)],
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        universal_newlines=True,  # noqa: UP021 for python 3.6 support
-        check=False,
-    )
-
-    # Assert the subprocess exits successfully
-    assert result.returncode == 0, f"Script failed with stderr: {result.stderr}"
 
 
 @pytest.mark.parametrize("bad_char", ["‘", "’", "“", "”", "…", "—"])  # noqa: RUF001

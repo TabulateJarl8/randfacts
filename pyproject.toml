@@ -83,6 +83,7 @@ ignore = [
   "DOC",
   "INP001",
   "S",
+  "FA100",
 ]
 "src/randfacts/__main__.py" = ["T201"]
 
