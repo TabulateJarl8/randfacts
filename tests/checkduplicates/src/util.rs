@@ -29,6 +29,7 @@ fn get_project_path(filename: &str) -> PathBuf {
 
     let mut project_root: PathBuf = PathBuf::from(String::from_utf8(output.stdout).unwrap().trim());
 
+    project_root.push("src");
     project_root.push("randfacts");
     project_root.push(filename);
     project_root

@@ -22,20 +22,32 @@ Randfacts is a Python module that generates random facts. You can use `randfacts
 
 randfacts can either be installed via pip or via the AUR, whichever way you prefer.
 
-### Installation via pip:
+### Installation via uv/pipx/pip:
 
 ```sh
+# Install with UV:
+$ uv tool install randfacts
+
+# Or just try it out:
+$ uvx randfacts
+
+# Install with pipx:
+$ pipx install randfacts
+
+# Install with bare pip:
 $ pip3 install randfacts
 ```
 
 ### Installation via AUR:
 
 Via your AUR helper, like paru:
+
 ```sh
 $ paru -S python-randfacts
 ```
 
 Or manually
+
 ```sh
 $ git clone https://aur.archlinux.org/python-randfacts.git && cd python-randfacts
 $ makepkg -si
@@ -48,10 +60,12 @@ import randfacts
 x = randfacts.get_fact()
 print(x)
 ```
+
 The above example will print a random fact like:
 `Penguins can't taste sweet or savory flavors, only sour and salty ones`
 
 This package has a filter option to filter out potentially inappropriate facts. The filter is on by default. To disable the filter, you can just set the `filter_enabled` parameter to `False`.
+
 ```python
 from randfacts import get_fact
 print(get_fact(False))
@@ -66,7 +80,6 @@ print(get_fact(only_unsafe=True))
 ```
 
 If you want to access the list of facts directly, you can just import the `safe_facts`, `unsafe_facts`, or `all_facts` lists from the randfacts module.
-
 
 ## Command line usage
 
@@ -94,4 +107,30 @@ More help.
 
 ```sh
 $ python3 -m randfacts --help
+```
+
+# Contributing
+
+Contributions are welcome, this project uses [uv](https://github.com/astral-sh/uv) to manage it's dependencies, so setup is very simple.
+
+## Development Setup
+
+1. Make sure uv is properly installed
+2. Fork and clone the repository with `git clone git@github.com:your-username/randfacts.git`
+3. Install dependencies with `uv sync --dev`
+4. After making changes, ensure the tests pass, and add any unit tests needed to bring code coverage to 100% with the following command:
+
+```sh
+# check everything, if you're just working on one particular issue,
+# see the Makefile for more granular tasks
+make check-all
+```
+
+## Duplicate facts test
+
+I've created a fairly complex duplicate fact detection test in Rust. It will be easier to run on your machine to check/fix any issues, but it also runs in CI if you don't want to set up Rust. It can be run with the following:
+
+```sh
+cd tests/checkduplicates
+cargo run --release
 ```

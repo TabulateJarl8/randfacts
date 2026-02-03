@@ -1,13 +1,16 @@
-[tool.poetry]
+[project]
 name = "randfacts"
-version = "0.23.0"
+version = "0.24.0"
 description = "Package to generate random facts"
-authors = ["TabulateJarl8 <tabulatejarl8@gmail.com>"]
-license = "MIT"
 readme = "README.md"
-include = ["randfacts/*.txt"]
-homepage = "https://tabulate.tech/software/randfacts/"
-repository = "https://github.com/TabulateJarl8/randfacts"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "TabulateJarl8", email = "tabulatejarl8@gmail.com" }]
+requires-python = ">=3.6"
+dependencies = [
+  "dataclasses>=0.8 ; python_full_version == '3.6.*'",
+  "importlib-metadata>=4.8.3 ; python_full_version < '3.8'",
+]
 classifiers = [
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3.6",
@@ -23,42 +26,51 @@ classifiers = [
   "License :: OSI Approved :: MIT License",
   "Operating System :: OS Independent",
   "Development Status :: 5 - Production/Stable",
+  "Environment :: Console",
   "Intended Audience :: Developers",
+  "Intended Audience :: End Users/Desktop",
+  "Topic :: Games/Entertainment",
+  "Topic :: Education",
   "Topic :: Software Development :: Libraries :: Python Modules",
 ]
-packages = [{ include = 'randfacts' }]
+keywords = ["facts", "random", "generator", "trivia", "cli", "dataset"]
 
-[tool.poetry.scripts]
-randfacts = 'randfacts.randfacts:_cli_entrypoint'
+[project.urls]
+homepage = "https://tabulate.tech/software/randfacts/"
+repository = "https://github.com/TabulateJarl8/randfacts"
+issues = "https://github.com/TabulateJarl8/randfacts/issues"
 
-[tool.pyright]
-reportUnusedCallResult = false
+[project.scripts]
+randfacts = "randfacts.__main__:cli_entrypoint"
+
+[tool.uv.build-backend]
+source-include = ["src/randfacts/*.txt"]
+
+[dependency-groups]
+dev = [
+  "ruff~=0.7.4 ; python_full_version >= '3.7' and python_full_version < '3.9'",
+  "ruff>=0.14.14 ; python_full_version >= '3.9'",
+  "pytest>=9.0.2 ; python_full_version >= '3.10'",
+  "pytest~=8.3.3 ; python_full_version >= '3.8' and python_full_version < '3.10'",
+  "pytest~=6.2.0 ; python_full_version >= '3.6' and python_full_version < '3.8'",
+  "pytest-cov>=7.0.0 ; python_full_version >= '3.9'",
+  "pytest-cov~=5.0.0 ; python_full_version == '3.8.*'",
+  "pytest-cov~=4.0.0 ; python_full_version >= '3.6' and python_full_version < '3.8'",
+  "mypy>=1.19.1 ; python_full_version >= '3.9'",
+  "mypy~=1.14.0 ; python_full_version == '3.8.*'",
+  "mypy~=1.4.0 ; python_full_version == '3.7.*'",
+]
+
+[tool.ruff]
+target-version = "py37"
 
 [tool.ruff.lint]
 preview = true
 select = ["ALL"]
-
 ignore = [
-  # complains about tab indentation
-  "W191",
-  "D206",
-  # adds a line break before a class docstring
-  "D203",
-  # puts the first line summary of a docstring on a different line than the """
-  "D213",
-  # tries to add a blank line after the last docstring section
-  "D413",
   # yells at you if you use a bool typed function argument
   "FBT001",
   "FBT002",
-  # yells at you for using try-except in a for loop
-  "PERF203",
-  # allow for the use of Any
-  "ANN401",
-  # false positives for overriding methods (i think)
-  "PLR6301",
-  # disable too many branches check
-  "PLR0912",
   # copyright at top of file
   "CPY",
   # complains about random.choice() not being good for cryptography
@@ -77,16 +89,14 @@ ignore = [
   "DOC",
   "INP001",
   "S",
+  "FA100",
 ]
-"randfacts/randfacts.py" = ["T201"]
-"randfacts/__main__.py" = ["D100"]
+"src/randfacts/__main__.py" = ["T201"]
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"
 
 [tool.ruff.format]
-quote-style = "double"
-indent-style = "tab"
 line-ending = "lf"
 
 [tool.ruff.lint.isort]
@@ -94,40 +104,15 @@ combine-as-imports = true
 force-wrap-aliases = true
 order-by-type = true
 
-[tool.poetry.dependencies]
-python = "^3.6"
-importlib-metadata = { version = "^1.4", python = "<3.8" }
-
-[tool.poetry.group.dev.dependencies]
-ruff = [
-  { version = "^0.14.11", python = "^3.9" },
-  { version = "^0.7.4", python = ">=3.7,<3.9" },
-]
-pytest = [
-  { version = "^9.0.2", python = "^3.10" },
-  { version = "^8.3.3", python = ">=3.9,<3.10" },
-  { version = "^6.2.0", python = ">=3.6,<3.8" },
-]
-pytest-cov = [
-  { version = "^7.0.0", python = "^3.9" },
-  { version = "^5.0.0", python = ">=3.8,<3.9" },
-  { version = "^4.0.0", python = ">=3.6,<3.8" },
-]
-mypy = [
-  { version = "^1.19.1", python = "^3.9" },
-  { version = "~1.14.0", python = ">=3.8,<3.9" },
-  { version = "~1.4.0", python = ">=3.7,<3.8" },
-]
-
 [tool.coverage.run]
 omit = ["randfacts/__main__.py"]
 
-# legacy import: ingore types
+# legacy import: ignore types
 [tool.mypy]
 [[tool.mypy.overrides]]
 module = "importlib_metadata.*"
 ignore_missing_imports = true
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["uv_build>=0.9.26,<0.10.0"]
+build-backend = "uv_build"
