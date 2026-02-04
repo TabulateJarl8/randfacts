@@ -16,6 +16,7 @@ clean:
 	find . -type d -name "__pycache__" -exec rm -rfv "{}" +
 	rm -rfv .mypy_cache .pytest_cache .ruff_cache dist
 	rm -fv .coverage coverage.xml
+	@command -v cargo >/dev/null 2>&1 && cargo clean --manifest-path tests/checkduplicates/Cargo.toml
 
 check-all: test-cov lint
 	uv run mypy .
