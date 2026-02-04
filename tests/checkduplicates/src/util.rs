@@ -61,8 +61,13 @@ pub fn load_fact_list(filename: &str, fact_class: FactClass) -> Vec<Fact> {
     let buf = BufReader::new(file);
     buf.lines()
         .enumerate()
-        .map(|(line_number, line)| {
-            Fact::new(line.expect("Could not parse line"), fact_class, line_number)
+        .filter_map(|(line_number, line)| {
+            let strline = line.expect("Could not parse line");
+            if strline.trim().is_empty() {
+                return None;
+            }
+
+            Some(Fact::new(strline, fact_class, line_number))
         })
         .collect()
 }
