@@ -1137,7 +1137,7 @@ wheels = [
 
 [[package]]
 name = "randfacts"
-version = "0.24.1"
+version = "0.24.2"
 source = { editable = "." }
 dependencies = [
     { name = "dataclasses", marker = "python_full_version < '3.7'" },
