@@ -23,7 +23,6 @@ classifiers = [
   "Programming Language :: Python :: 3.13",
   "Programming Language :: Python :: 3.14",
   "Natural Language :: English",
-  "License :: OSI Approved :: MIT License",
   "Operating System :: OS Independent",
   "Development Status :: 5 - Production/Stable",
   "Environment :: Console",
@@ -114,5 +113,5 @@ module = "importlib_metadata.*"
 ignore_missing_imports = true
 
 [build-system]
-requires = ["uv_build>=0.9.26,<0.11.0"]
+requires = ["uv_build>=0.9.26,<0.12"]
 build-backend = "uv_build"
