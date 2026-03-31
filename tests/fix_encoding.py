@@ -14,6 +14,11 @@ bad_characters = [
     ("”", '"'),
     ("…", "..."),
     ("—", "-"),
+    ("–", "-"),  # noqa: RUF001
+    ("\xa0", ""),
+    ("′", "'"),  # noqa: RUF001
+    ("″", '"'),
+    ("⅕", "1/5"),
 ]
 
 with safe_path.open("r+", encoding="utf-8") as f:
