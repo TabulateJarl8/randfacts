@@ -10,7 +10,6 @@ description = "randfacts check duplicates test"
 [dependencies]
 clap = { version = "4.4.18", features = ["cargo"] }
 indicatif = { version = "0.18.3", features = ["rayon"] }
-num-integer = "0.1.46"
 rayon = "1.10.0"
 
 [profile.release]
